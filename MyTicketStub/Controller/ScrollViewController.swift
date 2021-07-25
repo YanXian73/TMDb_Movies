@@ -64,7 +64,7 @@ class ScrollViewController: UIViewController, UITextFieldDelegate {
     @IBAction func done(_ sender: Any) {
         
         currentData.image = self.imageV.image
-        if let firstVC = storyboard?.instantiateViewController(withIdentifier: "VC") as? FirstViewController {
+        if let firstVC = storyboard?.instantiateViewController(withIdentifier: "firstVC") as? FirstViewController {
            firstVC.didupdateCollectionView(pickerData: currentData)
             
             self.navigationController?.popViewController(animated: true)

@@ -12,10 +12,15 @@ class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var tableView: UITableView!
     
     var movieData = [MoviesData]()
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        getMoviesInfo()
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 175
-        getMoviesInfo()
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -48,24 +53,27 @@ class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDat
          */
        
     }
- 
+    
     func getMoviesInfo(){
         
-        if let url_2020 = URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=39ba2275337b048cb87893b4520b0c94&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2020&with_watch_monetization_types=flatrate"){
-            let request = URLRequest(url: url_2020)
-            let session = URLSession.shared.dataTask(with: request) { data, responds, error in
-                let decoder = JSONDecoder()
-                if let data = data, let item = try? decoder.decode(Item.self, from: data) {
-                    self.movieData = item.results
-                }
+        guard let url_2020 = URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=39ba2275337b048cb87893b4520b0c94&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2020&with_watch_monetization_types=flatrate")
+        else{ return }
+        let request = URLRequest(url: url_2020)
+        let session = URLSession.shared.dataTask(with: request) { data, responds, error in
+            let decoder = JSONDecoder()
+            if let data = data, let item = try? decoder.decode(Item.self, from: data) {
+                self.movieData = item.results
             }
-            session.resume()
         }
+        session.resume()
     }
+    
     
     
     //MARK: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
         return self.movieData.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
