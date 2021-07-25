@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		052BC7BE26AC0C66006AFCC8 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BC7BD26AC0C66006AFCC8 /* MyTableViewCell.swift */; };
 		052BC7C026AC2FFD006AFCC8 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BC7BF26AC2FFD006AFCC8 /* MovieViewController.swift */; };
-		052BC7C226AC6045006AFCC8 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BC7C126AC6045006AFCC8 /* Movies.swift */; };
+		052BC7C226AC6045006AFCC8 /* MoviesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BC7C126AC6045006AFCC8 /* MoviesData.swift */; };
+		053750E626AD5AA800E271BA /* MoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053750E526AD5AA800E271BA /* MoviesTableViewCell.swift */; };
 		0540C9E626A7EB9B00BFF7EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0540C9E526A7EB9B00BFF7EF /* AppDelegate.swift */; };
 		0540C9E826A7EB9B00BFF7EF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0540C9E726A7EB9B00BFF7EF /* SceneDelegate.swift */; };
 		0540C9EA26A7EB9B00BFF7EF /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0540C9E926A7EB9B00BFF7EF /* FirstViewController.swift */; };
@@ -28,7 +29,8 @@
 /* Begin PBXFileReference section */
 		052BC7BD26AC0C66006AFCC8 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		052BC7BF26AC2FFD006AFCC8 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
-		052BC7C126AC6045006AFCC8 /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
+		052BC7C126AC6045006AFCC8 /* MoviesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesData.swift; sourceTree = "<group>"; };
+		053750E526AD5AA800E271BA /* MoviesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewCell.swift; sourceTree = "<group>"; };
 		0540C9E226A7EB9B00BFF7EF /* MyTicketStub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTicketStub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0540C9E526A7EB9B00BFF7EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0540C9E726A7EB9B00BFF7EF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				0540C9FB26A7FC1A00BFF7EF /* PickerData.swift */,
-				052BC7C126AC6045006AFCC8 /* Movies.swift */,
+				052BC7C126AC6045006AFCC8 /* MoviesData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -85,6 +87,7 @@
 			children = (
 				05B7F64426A8742000DA2850 /* MyCollectionViewCell.swift */,
 				052BC7BD26AC0C66006AFCC8 /* MyTableViewCell.swift */,
+				053750E526AD5AA800E271BA /* MoviesTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -210,12 +213,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				052BC7C226AC6045006AFCC8 /* Movies.swift in Sources */,
+				052BC7C226AC6045006AFCC8 /* MoviesData.swift in Sources */,
 				0540C9EA26A7EB9B00BFF7EF /* FirstViewController.swift in Sources */,
 				052BC7BE26AC0C66006AFCC8 /* MyTableViewCell.swift in Sources */,
 				0540C9FC26A7FC1A00BFF7EF /* PickerData.swift in Sources */,
 				05B7F64526A8742000DA2850 /* MyCollectionViewCell.swift in Sources */,
 				05BE20B726A95C5600B1A497 /* ScrollViewController.swift in Sources */,
+				053750E626AD5AA800E271BA /* MoviesTableViewCell.swift in Sources */,
 				052BC7C026AC2FFD006AFCC8 /* MovieViewController.swift in Sources */,
 				05E36DE626AA8B3B00F9E693 /* MapViewController.swift in Sources */,
 				0540C9E626A7EB9B00BFF7EF /* AppDelegate.swift in Sources */,
