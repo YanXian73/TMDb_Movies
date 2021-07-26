@@ -56,9 +56,9 @@ class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func getMoviesInfo(){
         
-        guard let url_2020 = URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=39ba2275337b048cb87893b4520b0c94&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2020&with_watch_monetization_types=flatrate")
+        guard let getUpComingMovie = URL(string: "https://api.themoviedb.org/3/movie/upcoming?api_key=39ba2275337b048cb87893b4520b0c94&language=zh-TW&page=1&region=TW")
         else{ return }
-        let request = URLRequest(url: url_2020)
+        let request = URLRequest(url: getUpComingMovie)
         let session = URLSession.shared.dataTask(with: request) { data, responds, error in
             let decoder = JSONDecoder()
             if let data = data, let item = try? decoder.decode(Item.self, from: data) {
@@ -80,7 +80,7 @@ class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "moviesCell", for: indexPath) as! MoviesTableViewCell
         
-        cell.titleLabel.text = self.movieData[indexPath.row].original_title
+        cell.titleLabel.text = self.movieData[indexPath.row].title
         cell.releaseDateLabel.text = self.movieData[indexPath.row].release_date
         cell.voteLabel.text = "\(self.movieData[indexPath.row].vote_average ?? 0.0)"
         

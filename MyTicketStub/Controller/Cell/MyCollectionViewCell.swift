@@ -10,7 +10,6 @@ import UIKit
 class MyCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var image: UIImageView!
-    @IBOutlet weak var textLabel: UILabel!
     var imageName : String?
     var date : Date!
     
