@@ -10,14 +10,15 @@ import UIKit
 class MenuTableViewCell: UITableViewCell {
 
 
+
+    @IBOutlet weak var menuLabel: UILabel!
     @IBOutlet weak var menuImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-    @IBAction func menuBtnPressed(_ sender: UIButton) {
         
     }
+
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

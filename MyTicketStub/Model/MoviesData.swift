@@ -7,7 +7,9 @@
 
 import Foundation
 //解碼json資料要繼承 Codable解碼, Decodable
-struct MoviesData : Codable{
+class MoviesData : Codable{
+    
+ //  var moviesCellTitle = ["即將上映", "現正放映", "最受歡迎電影", "最受好評電影"]
     
     //取得TMDB電影的API的 json資料 命名要跟想要拿的 key 一樣
     var original_title : String?
@@ -18,6 +20,6 @@ struct MoviesData : Codable{
     var overview : String?
     
 }
-struct Item: Codable {
+class Item: Codable {
     var results : [MoviesData]
 }

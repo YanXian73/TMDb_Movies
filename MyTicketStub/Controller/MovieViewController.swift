@@ -10,12 +10,12 @@ import UIKit
 class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    
+    var indexPath : IndexPath?
     var movieData = [MoviesData]()
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-        getMoviesInfo()
+     //  getMoviesInfo()
         
     }
     override func viewDidLoad() {
@@ -55,16 +55,34 @@ class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func getMoviesInfo(){
+        var url : URL?
         
-        guard let getUpComingMovie = URL(string: "https://api.themoviedb.org/3/movie/upcoming?api_key=39ba2275337b048cb87893b4520b0c94&language=zh-TW&page=1&region=TW")
+        switch indexPath?.row {
+        case 0: // 即將上映
+            url = URL(string: "https://api.themoviedb.org/3/movie/upcoming?api_key=39ba2275337b048cb87893b4520b0c94&language=zh-TW&page=1&region=TW")
+        case 1: // 現正上映中
+            url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=39ba2275337b048cb87893b4520b0c94&language=zh-TW&page=1&region=TW")
+        case 2: // 最受歡迎電影
+            url = URL(string:
+                        "https://api.themoviedb.org/3/movie/popular?api_key=39ba2275337b048cb87893b4520b0c94&language=zh-TW&page=1&region=TW")
+        default:  //最高評分電影
+            url = URL(string: "https://api.themoviedb.org/3/movie/top_rated?api_key=39ba2275337b048cb87893b4520b0c94&language=zh-TW&page=1&region=TW")
+        }
+        
+        guard let requestURL = url
         else{ return }
-        let request = URLRequest(url: getUpComingMovie)
+        let request = URLRequest(url: requestURL)
         let session = URLSession.shared.dataTask(with: request) { data, responds, error in
             let decoder = JSONDecoder()
+            if let e = error {
+                assertionFailure("error: \(e)")
+                return
+            }
+            
             if let data = data, let item = try? decoder.decode(Item.self, from: data) {
                 self.movieData = item.results
             }
-        }
+    }
         session.resume()
     }
     

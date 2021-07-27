@@ -9,8 +9,10 @@ import UIKit
 
 class MenuTableViewController: UITableViewController {
     
-    var menuData = [MoviesData]()
+  //  var menuData = [MoviesData]()
 
+    let moviesCellTitle = ["即將上映", "現正放映", "最受歡迎電影", "最受好評電影"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,26 +23,57 @@ class MenuTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "segueMovieVC" else {
+            return
+        }
+        if let movieVC = segue.destination as? MovieViewController,
+           let index = tableView.indexPathForSelectedRow {
+            movieVC.indexPath = index
+            movieVC.getMoviesInfo()
+        }
+    }
 
     // MARK: - Table view data source
-
+//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        if section == 0 {
+//            let text = "＊＊＊＊＊＊＊＊＊院線區＊＊＊＊＊＊＊＊＊"
+//
+//            return text
+//        }else {
+//            return "＊＊＊＊＊＊＊＊＊選片區＊＊＊＊＊＊＊＊＊"
+//        }
+//    }
+//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        if section == 1{
+//            return 100
+//        }
+//        return 0
+//    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+     
+        return self.moviesCellTitle.count
+        
     }
 
   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! MenuTableViewCell
-
-        // Configure the cell...
-
+        
+     
+        cell.menuLabel.text = moviesCellTitle[indexPath.row]
+        
         return cell
+        
     }
   
 
