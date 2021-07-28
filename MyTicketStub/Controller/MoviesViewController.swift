@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     var indexPath : IndexPath?
@@ -53,6 +53,17 @@ class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDat
          */
        
     }
+    @IBAction func addMyMovieList(_ sender: Any) {
+        let myMovie = MyMoviesTableViewController()
+        var  movie = MoviesData()
+        
+        //用Button的方式 拿不到 tableView.indexPathForSelectedRow
+//        if  let  index =  tableView.indexPathForSelectedRow  {
+//            movie = self.movieData[index.row]
+//            myMovie.currentMovie = movie
+//        }
+        
+    }
     
     func getMoviesInfo(){
         var url : URL?
@@ -85,10 +96,23 @@ class MovieViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
         session.resume()
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMovieVC" {
+            if let showMovieVC = segue.destination as? ShowMovieViewController,
+               let indexPath = tableView.indexPathForSelectedRow {
+                let  movie = self.movieData[indexPath.row]
+                showMovieVC.currentMovie = movie
+            }
+        }
+    }
     
     
     
     //MARK: UITableViewDelegate, UITableViewDataSource
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         

@@ -35,7 +35,7 @@ class ScrollViewController: UIViewController, UITextFieldDelegate {
         
         imageV.image = self.currentData.image
         scrollView.contentSize = CGSize(width: 384, height: 1000)
-        
+       
         self.contentView.layer.cornerRadius = 20
      /*
         contentView.leftAnchor.constraint(equalTo: self.scrollView.leftAnchor, constant: 10).isActive = true
