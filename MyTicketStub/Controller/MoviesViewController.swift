@@ -10,8 +10,11 @@ import UIKit
 class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    
     var indexPath : IndexPath?
     var movieData = [MoviesData]()
+    
+    var queue = OperationQueue()
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
@@ -19,6 +22,8 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
     override func viewDidLoad() {
+        
+        queue.maxConcurrentOperationCount = 2
         super.viewDidLoad()
         tableView.rowHeight = 175
         tableView.dataSource = self
@@ -92,13 +97,16 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             if let data = data, let item = try? decoder.decode(Item.self, from: data) {
                 self.movieData = item.results
+                DispatchQueue.main.async { //下載完成之後要重新更新畫面
+                    self.tableView.reloadData()
+                }
             }
     }
         session.resume()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showMovieVC" {
-            if let showMovieVC = segue.destination as? ShowMovieViewController,
+        if segue.identifier == "showMovieTVC" {
+            if let showMovieVC = segue.destination as? ShowMovieTableViewController,
                let indexPath = tableView.indexPathForSelectedRow {
                 let  movie = self.movieData[indexPath.row]
                 showMovieVC.currentMovie = movie
@@ -121,27 +129,33 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "moviesCell", for: indexPath) as! MoviesTableViewCell
-        
+       
         cell.titleLabel.text = self.movieData[indexPath.row].title
-        cell.releaseDateLabel.text = self.movieData[indexPath.row].release_date
+        cell.releaseDateLabel.text = "上映日期：\(self.movieData[indexPath.row].release_date ?? "")"
         cell.voteLabel.text = "\(self.movieData[indexPath.row].vote_average ?? 0.0)"
-        
+        cell.movieImageView.image = nil //cell可能被reuse，所以要先清除原本的照片，否則會看到原照片的殘影
         //取得TMDB網址的圖片
         if let imageKey = self.movieData[indexPath.row].poster_path {
             if let imageURL = URL(string: "https://image.tmdb.org/t/p/w500" + imageKey) {
-                let request = URLRequest(url: imageURL)
-                let session = URLSession.shared.dataTask(with: request) { data, responds, error in
-                    if let data = data {
-                        DispatchQueue.main.async {
-                            cell.movieImageView.image = UIImage(data: data)
-                        }
-                    }
-                }
-                session.resume()
+                
+                let operation = ImageOperation(url: imageURL, indexPath: indexPath, tableView: tableView)
+                self.queue.addOperation(operation)
+                
+//                let session = URLSession.shared.dataTask(with: request) { data, responds, error in
+//                    if let data = data {
+//                        DispatchQueue.main.async {
+//                            cell.movieImageView.image = UIImage(data: data)
+//                        }
+//                    }
+//                }
+//                session.resume()
             }
         }
-        
+       
         return cell
+    }
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        //...
     }
     
     /*

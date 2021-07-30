@@ -9,6 +9,16 @@ import UIKit
 
 class ShowMovieTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var originTitleLabel: UILabel!
+    @IBOutlet weak var releaseDateLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var voteLabel: UILabel!
+    @IBOutlet weak var backGropImageView: UIImageView!
+    
+    @IBOutlet weak var posterImageView: UIImageView!
+    
+    @IBOutlet weak var overViewLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

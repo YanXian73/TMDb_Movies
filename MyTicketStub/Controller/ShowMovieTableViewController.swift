@@ -8,7 +8,11 @@
 import UIKit
 
 class ShowMovieTableViewController: UITableViewController {
+    
+ 
 
+    let queue = OperationQueue()
+    var currentMovie =  MoviesData()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,28 +22,66 @@ class ShowMovieTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 3
     }
 
-    /*
+   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        
+        let cell0 = tableView.dequeueReusableCell(withIdentifier: "cell0", for: indexPath) as! ShowMovieTableViewCell
+        let cell1 = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! ShowMovieTableViewCell
+        let cell2 = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ShowMovieTableViewCell
+     
+       
+        
+        switch indexPath.row {
+        case 0:
+            if let imageKey = self.currentMovie.backdrop_path {
+                if let imageURL = URL(string: "https://image.tmdb.org/t/p/w500" + imageKey) {
+                    
+                    let operation = ImageOperation(url: imageURL, indexPath: indexPath, tableView: tableView)
+                    self.queue.addOperation(operation)
+                }
+            }
+            return cell0
+        case 1:
+            
+            if currentMovie.original_title != currentMovie.title {
+                cell1.originTitleLabel.text = currentMovie.original_title
+            }else {
+                cell1.originTitleLabel.text = ""
+            }
+            cell1.titleLabel.text = currentMovie.title
+            cell1.releaseDateLabel.text = "上映日期：" + "\(currentMovie.release_date ?? "")"
+            cell1.voteLabel.text = "\(currentMovie.vote_average ?? 0)"
+            if let imageKey = self.currentMovie.poster_path {
+                if let imageURL = URL(string: "https://image.tmdb.org/t/p/w500" + imageKey) {
+                    
+                    let operation = ImageOperation(url: imageURL, indexPath: indexPath, tableView: tableView)
+                    self.queue.addOperation(operation)
+                }
+            }
+            return cell1
+        default:
+            if let overView = currentMovie.overview {
+                cell2.overViewLabel.text = overView
+            }
+            return cell2
+            
+        }
     }
-    */
+   
 
     /*
     // Override to support conditional editing of the table view.

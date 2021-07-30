@@ -7,13 +7,17 @@
 
 import UIKit
 
-class FirstViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate {
-    
+class FirstViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate, ScrollViewControllerDeleage {
+    func didupdateView( pickerData: PickerData){
+        data.append(pickerData)
+        
+        self.collectionView.reloadData()
+    }
     
     @IBOutlet weak var collectionLayout: UICollectionViewFlowLayout!
- @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
-  // var collectionView = UICollectionView()
+    // var collectionView = UICollectionView()
     
     let picker = UIImagePickerController()
     
@@ -23,13 +27,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       text = ["dddddd","dddddd","eeeee"]
-        collectionView.backgroundColor = .orange
-        
-        for _ in 0..<10 {
-            let ddd = PickerData()
-        data.append(ddd)
-        }
+     
 //        let fullScreenSize = UIScreen.main.bounds.size
 //        self.collectionView = UICollectionView(frame: CGRect(
 //              x: 0, y: 20,
@@ -39,18 +37,19 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
     //   collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.dataSource = self
         collectionView.delegate = self
-     
         
+       /*
+        func didupdateView( pickerData: PickerData){
+            data.append(pickerData)
+            
+            self.collectionView.reloadData()
+        }*/
     }
-    func didupdateCollectionView( pickerData: PickerData){
-        data.append(pickerData)
-        
-    self.collectionView.reloadData()
-        
-    }
+    
     //test
     @IBAction func goToScrollView(_ sender: Any) {
         if let scrollVC = storyboard?.instantiateViewController(withIdentifier: "scrollVC") as? ScrollViewController {
+           
             self.navigationController?.pushViewController(scrollVC, animated: true)
         }
         
@@ -70,9 +69,11 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
         if let image = info[.originalImage] as? UIImage ,
            let scrollVC = storyboard?.instantiateViewController(withIdentifier: "scrollVC") as? ScrollViewController {
           //  UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil) //存到相簿裡
+            scrollVC.delegate = self
             scrollVC.currentData.image = image
             self.dismiss(animated: true, completion:nil) //關閉拍照選擇視窗
-            self.navigationController?.pushViewController(scrollVC, animated: true)
+            present(scrollVC, animated: true, completion: nil)
+          //  self.navigationController?.pushViewController(scrollVC, animated: true)
         
         }
     //    if let scVC = storyboard?.instantiateViewController(withIdentifier: "secondVC") as? SecondViewController {
@@ -92,6 +93,8 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MyCollectionViewCell
         //  cell.textLabel.text = text[indexPath.row]
         cell.image.image = self.data[indexPath.row].image
+//        self.collectionLayout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 20)
+//        self.collectionLayout.minimumLineSpacing = 5 //設定cell與cell間的縱距
         
         return cell
     }

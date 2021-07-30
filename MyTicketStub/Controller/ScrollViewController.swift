@@ -6,6 +6,9 @@
 //
 
 import UIKit
+protocol ScrollViewControllerDeleage: AnyObject {
+    func didupdateView(pickerData: PickerData)
+}
 
 class ScrollViewController: UIViewController, UITextFieldDelegate {
 
@@ -18,11 +21,16 @@ class ScrollViewController: UIViewController, UITextFieldDelegate {
     var currentData = PickerData()
     var firstVC : FirstViewController?
     var textTitle = ["主題：", "日期：", "標籤：", "備註："]
+    
+    @IBOutlet weak var textView: UITextView!
+    weak var delegate : ScrollViewControllerDeleage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         for index in 0...textLabel.count-1 {
             textLabel[index].text = textTitle[index]
         }
+        
         textField.delegate = self
         textField.placeholder = "必填"
         datePicker.datePickerMode = .dateAndTime
@@ -34,22 +42,10 @@ class ScrollViewController: UIViewController, UITextFieldDelegate {
         datePicker.addTarget(self, action: #selector(datePickChanged), for: .valueChanged)
         
         imageV.image = self.currentData.image
-        scrollView.contentSize = CGSize(width: 384, height: 1000)
+    //    scrollView.contentSize = CGSize(width: 384, height: 1000)
        
-        self.contentView.layer.cornerRadius = 20
-     /*
-        contentView.leftAnchor.constraint(equalTo: self.scrollView.leftAnchor, constant: 10).isActive = true
-        contentView.rightAnchor.constraint(equalTo: self.scrollView.rightAnchor, constant: 10).isActive = true
-        contentView.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: 10).isActive = true
-        
-        scrollView.contentLayoutGuide.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 10).isActive = true
-        scrollView.contentLayoutGuide.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
-        scrollView.contentLayoutGuide.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
-        scrollView.contentLayoutGuide.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 10).isActive = true
-        
-    //    contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 10).isActive = true
-        
-        */
+    //   self.contentView.layer.cornerRadius = 20
+    
     }
     
     @objc func datePickChanged(){
@@ -61,15 +57,17 @@ class ScrollViewController: UIViewController, UITextFieldDelegate {
     @IBAction func changeMapPlace(_ sender: Any) {
         
     }
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBAction func done(_ sender: Any) {
         
         currentData.image = self.imageV.image
-        if let firstVC = storyboard?.instantiateViewController(withIdentifier: "firstVC") as? FirstViewController {
-           firstVC.didupdateCollectionView(pickerData: currentData)
-            
-            self.navigationController?.popViewController(animated: true)
-        }
+        self.delegate?.didupdateView(pickerData: currentData)
+        self.dismiss(animated: true, completion: nil)
+      //  self.navigationController?.popViewController(animated: true)
     }
+    
     
 //MARK : UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
