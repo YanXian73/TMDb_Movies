@@ -18,9 +18,11 @@
 		0540C9ED26A7EB9B00BFF7EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0540C9EB26A7EB9B00BFF7EF /* Main.storyboard */; };
 		0540C9EF26A7EB9C00BFF7EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0540C9EE26A7EB9C00BFF7EF /* Assets.xcassets */; };
 		0540C9F226A7EB9C00BFF7EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0540C9F026A7EB9C00BFF7EF /* LaunchScreen.storyboard */; };
-		0540C9FC26A7FC1A00BFF7EF /* PickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0540C9FB26A7FC1A00BFF7EF /* PickerData.swift */; };
+		0540C9FC26A7FC1A00BFF7EF /* TicketStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0540C9FB26A7FC1A00BFF7EF /* TicketStub.swift */; };
 		0572335A26AF0EB4004B6C13 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0572335926AF0EB4004B6C13 /* MenuTableViewController.swift */; };
 		0572335C26AF0EFC004B6C13 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0572335B26AF0EFC004B6C13 /* MenuTableViewCell.swift */; };
+		058B430B26B514F0005A3FA7 /* MyTicket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 058B430926B514F0005A3FA7 /* MyTicket.xcdatamodeld */; };
+		058B430D26B51E12005A3FA7 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058B430C26B51E12005A3FA7 /* CoreDataHelper.swift */; };
 		05A5E48F26B3A4D600CE02F6 /* ShowMovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A5E48E26B3A4D600CE02F6 /* ShowMovieTableViewController.swift */; };
 		05A5E49126B3AE3B00CE02F6 /* ShowMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A5E49026B3AE3B00CE02F6 /* ShowMovieTableViewCell.swift */; };
 		05B7F64526A8742000DA2850 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B7F64426A8742000DA2850 /* MyCollectionViewCell.swift */; };
@@ -44,9 +46,11 @@
 		0540C9EE26A7EB9C00BFF7EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0540C9F126A7EB9C00BFF7EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0540C9F326A7EB9C00BFF7EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0540C9FB26A7FC1A00BFF7EF /* PickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerData.swift; sourceTree = "<group>"; };
+		0540C9FB26A7FC1A00BFF7EF /* TicketStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketStub.swift; sourceTree = "<group>"; };
 		0572335926AF0EB4004B6C13 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		0572335B26AF0EFC004B6C13 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		058B430A26B514F0005A3FA7 /* MyTicket.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyTicket.xcdatamodel; sourceTree = "<group>"; };
+		058B430C26B51E12005A3FA7 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		05A5E48E26B3A4D600CE02F6 /* ShowMovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMovieTableViewController.swift; sourceTree = "<group>"; };
 		05A5E49026B3AE3B00CE02F6 /* ShowMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMovieTableViewCell.swift; sourceTree = "<group>"; };
 		05B7F64426A8742000DA2850 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -72,8 +76,10 @@
 		052BC7BA26AC0A1D006AFCC8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0540C9FB26A7FC1A00BFF7EF /* PickerData.swift */,
+				0540C9FB26A7FC1A00BFF7EF /* TicketStub.swift */,
 				052BC7C126AC6045006AFCC8 /* MoviesData.swift */,
+				058B430926B514F0005A3FA7 /* MyTicket.xcdatamodeld */,
+				058B430C26B51E12005A3FA7 /* CoreDataHelper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -222,7 +228,8 @@
 				05A5E49126B3AE3B00CE02F6 /* ShowMovieTableViewCell.swift in Sources */,
 				0572335C26AF0EFC004B6C13 /* MenuTableViewCell.swift in Sources */,
 				0572335A26AF0EB4004B6C13 /* MenuTableViewController.swift in Sources */,
-				0540C9FC26A7FC1A00BFF7EF /* PickerData.swift in Sources */,
+				058B430D26B51E12005A3FA7 /* CoreDataHelper.swift in Sources */,
+				0540C9FC26A7FC1A00BFF7EF /* TicketStub.swift in Sources */,
 				05B7F64526A8742000DA2850 /* MyCollectionViewCell.swift in Sources */,
 				05BE20B726A95C5600B1A497 /* ScrollViewController.swift in Sources */,
 				053750E626AD5AA800E271BA /* MoviesTableViewCell.swift in Sources */,
@@ -230,6 +237,7 @@
 				050075E926B27E6200E2A2C9 /* ImageOperation.swift in Sources */,
 				052BC7C026AC2FFD006AFCC8 /* MoviesViewController.swift in Sources */,
 				05E36DE626AA8B3B00F9E693 /* MapViewController.swift in Sources */,
+				058B430B26B514F0005A3FA7 /* MyTicket.xcdatamodeld in Sources */,
 				0540C9E626A7EB9B00BFF7EF /* AppDelegate.swift in Sources */,
 				0540C9E826A7EB9B00BFF7EF /* SceneDelegate.swift in Sources */,
 			);
@@ -435,6 +443,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		058B430926B514F0005A3FA7 /* MyTicket.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				058B430A26B514F0005A3FA7 /* MyTicket.xcdatamodel */,
+			);
+			currentVersion = 058B430A26B514F0005A3FA7 /* MyTicket.xcdatamodel */;
+			path = MyTicket.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0540C9DA26A7EB9B00BFF7EF /* Project object */;
 }

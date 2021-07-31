@@ -3,7 +3,6 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -42,15 +41,24 @@
                                                         <constraint firstAttribute="width" secondItem="Ywi-El-psP" secondAttribute="height" multiplier="1:1" id="yyF-be-fM3"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RS-j7-JFF">
+                                                    <rect key="frame" x="3" y="3" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="9RS-j7-JFF" firstAttribute="leading" secondItem="icc-eR-ekA" secondAttribute="leading" constant="3" id="Jcz-EW-9T7"/>
                                                 <constraint firstItem="Ywi-El-psP" firstAttribute="leading" secondItem="icc-eR-ekA" secondAttribute="leading" id="Lqq-MB-M4E"/>
                                                 <constraint firstAttribute="bottom" secondItem="Ywi-El-psP" secondAttribute="bottom" id="P71-NB-3HG"/>
+                                                <constraint firstItem="9RS-j7-JFF" firstAttribute="top" secondItem="icc-eR-ekA" secondAttribute="top" constant="3" id="S5U-jq-8PT"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ywi-El-psP" secondAttribute="trailing" id="kiU-xg-Vam"/>
                                                 <constraint firstItem="Ywi-El-psP" firstAttribute="top" secondItem="icc-eR-ekA" secondAttribute="top" id="rhI-ZD-udw"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
+                                            <outlet property="checkMarkLabel" destination="9RS-j7-JFF" id="yM9-vw-iSm"/>
                                             <outlet property="image" destination="Ywi-El-psP" id="dbR-kg-KQE"/>
                                             <outlet property="imageWidth" destination="LEt-vY-i2b" id="crH-Qa-dNs"/>
                                         </connections>
@@ -68,20 +76,28 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Ticket stub" id="qPn-XA-QLy">
-                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="y3u-nm-QWH">
-                            <connections>
-                                <action selector="camera:" destination="ors-3A-MlY" id="ueQ-Ku-WX5"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="camera" id="y3u-nm-QWH">
+                                <connections>
+                                    <action selector="camera:" destination="ors-3A-MlY" id="ueQ-Ku-WX5"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" title="Item" image="trash" catalog="system" id="JfB-Kq-nj1">
+                                <connections>
+                                    <action selector="deleteBtn:" destination="ors-3A-MlY" id="bTq-UW-Baj"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionLayout" destination="UGB-Rh-Y8I" id="iLn-PY-B71"/>
                         <outlet property="collectionView" destination="ZZV-MD-2xg" id="rzf-Cw-JU6"/>
+                        <outlet property="deleteItem" destination="JfB-Kq-nj1" id="rvc-Qx-ut6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A9c-hn-VYq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2561" y="-162"/>
+            <point key="canvasLocation" x="2560.8000000000002" y="-162.3688155922039"/>
         </scene>
         <!--Scroll View Controller-->
         <scene sceneID="qXz-5Y-U7W">
@@ -159,9 +175,6 @@
                                                 <state key="normal" title="點擊選擇地區">
                                                     <color key="titleColor" red="0.42070715209999998" green="0.24619790380000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="changeMapPlace:" destination="ulC-0U-tdI" eventType="touchUpInside" id="Zae-qd-ui3"/>
-                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="477-3e-CPj">
                                                 <rect key="frame" x="11" y="515" width="70" height="40"/>
@@ -275,151 +288,19 @@
                     </view>
                     <navigationItem key="navigationItem" id="XPt-sV-hGZ"/>
                     <connections>
-                        <outlet property="datePicker" destination="uJ5-3l-RcP" id="gXj-Ia-iF7"/>
+                        <outlet property="datePicker" destination="uJ5-3l-RcP" id="sHR-lG-qvT"/>
                         <outlet property="imageV" destination="8fo-y7-iEf" id="UqA-Fp-Gh8"/>
-                        <outlet property="textField" destination="l8j-e8-02I" id="pFO-Fg-IsZ"/>
-                        <outlet property="textView" destination="IjW-Ml-A7i" id="SaE-lP-8gM"/>
-                        <outletCollection property="textLabel" destination="fTZ-N2-IXC" collectionClass="NSMutableArray" id="rdI-CH-Xgz"/>
-                        <outletCollection property="textLabel" destination="Z0W-NT-Yfa" collectionClass="NSMutableArray" id="yV9-72-d9Z"/>
-                        <outletCollection property="textLabel" destination="bTc-jZ-b8F" collectionClass="NSMutableArray" id="XYf-aZ-ixT"/>
-                        <outletCollection property="textLabel" destination="477-3e-CPj" collectionClass="NSMutableArray" id="WB0-E5-gPU"/>
+                        <outlet property="textField" destination="l8j-e8-02I" id="eGp-1z-61M"/>
+                        <outlet property="textView" destination="IjW-Ml-A7i" id="tCM-9E-6gG"/>
+                        <outletCollection property="textLabel" destination="fTZ-N2-IXC" collectionClass="NSMutableArray" id="m6r-Ak-kOY"/>
+                        <outletCollection property="textLabel" destination="Z0W-NT-Yfa" collectionClass="NSMutableArray" id="fjO-gF-hQF"/>
+                        <outletCollection property="textLabel" destination="bTc-jZ-b8F" collectionClass="NSMutableArray" id="EtR-ic-lXJ"/>
+                        <outletCollection property="textLabel" destination="477-3e-CPj" collectionClass="NSMutableArray" id="gQP-dE-gzF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uPt-Uy-p77" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3437.5999999999999" y="-162.3688155922039"/>
-        </scene>
-        <!--Scroll View Controller-->
-        <scene sceneID="9D6-fX-ujn">
-            <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="ulC-0U-tdI" customClass="ScrollViewController" customModule="MyTicketStub" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Lhm-e9-qfd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JP7-zF-JLj">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" id="IGK-HM-5Fs">
-                                        <rect key="frame" x="15" y="30" width="384" height="1000"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuO-t5-BoS">
-                                                <rect key="frame" x="16" y="212" width="74" height="42"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BzC-yD-Phx">
-                                                <rect key="frame" x="16" y="304" width="74" height="42"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4t-Gm-OYn">
-                                                <rect key="frame" x="16" y="547" width="74" height="42"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rzd-bM-DOr">
-                                                <rect key="frame" x="16" y="612" width="318" height="168"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <color key="textColor" systemColor="labelColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gi-cr-3uY">
-                                                <rect key="frame" x="16" y="430" width="74" height="42"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2zy-y5-zbc">
-                                                <rect key="frame" x="10" y="10" width="364" height="170"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="170" id="whd-dK-qrz"/>
-                                                </constraints>
-                                            </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="必填" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CyA-ya-hSQ">
-                                                <rect key="frame" x="98" y="220" width="276" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="1XO-zk-DYX">
-                                                <rect key="frame" x="98" y="252" width="276" height="147"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            </datePicker>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vbu-OE-i4U">
-                                                <rect key="frame" x="98" y="433" width="125" height="36"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="點擊選擇地區"/>
-                                                <connections>
-                                                    <action selector="changeMapPlace:" destination="ulC-0U-tdI" eventType="touchUpInside" id="hfH-Ih-LM3"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <viewLayoutGuide key="safeArea" id="vQQ-Pf-Em3"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="2zy-y5-zbc" secondAttribute="trailing" constant="10" id="9xb-6I-zhG"/>
-                                            <constraint firstItem="2zy-y5-zbc" firstAttribute="top" secondItem="IGK-HM-5Fs" secondAttribute="top" constant="10" id="Aru-Qs-1fi"/>
-                                            <constraint firstItem="2zy-y5-zbc" firstAttribute="leading" secondItem="IGK-HM-5Fs" secondAttribute="leading" constant="10" id="WEm-2B-ykd"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                                                <real key="value" value="0.59999999999999998"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
-                                                <size key="value" width="10" height="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" name="AccentColor"/>
-                                <viewLayoutGuide key="contentLayoutGuide" id="cTl-ZM-BKL"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="JFd-6A-eN8"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
-                                        <size key="value" width="0.0" height="1200"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="5E7-ES-zU3"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="PqK-0x-QJX">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="9WP-cv-dIj">
-                            <connections>
-                                <action selector="done:" destination="ulC-0U-tdI" id="ljq-ch-tPQ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="contentView" destination="IGK-HM-5Fs" id="rKr-Lo-qCU"/>
-                        <outlet property="datePicker" destination="1XO-zk-DYX" id="4gT-If-v4Y"/>
-                        <outlet property="imageV" destination="2zy-y5-zbc" id="cxI-6V-XrB"/>
-                        <outlet property="scrollView" destination="JP7-zF-JLj" id="kUu-o6-j5k"/>
-                        <outlet property="textField" destination="CyA-ya-hSQ" id="l93-Ws-KAr"/>
-                        <outletCollection property="textLabel" destination="vuO-t5-BoS" collectionClass="NSMutableArray" id="mRh-aG-blm"/>
-                        <outletCollection property="textLabel" destination="BzC-yD-Phx" collectionClass="NSMutableArray" id="E90-jI-Ys1"/>
-                        <outletCollection property="textLabel" destination="5gi-cr-3uY" collectionClass="NSMutableArray" id="yqw-EF-EeB"/>
-                        <outletCollection property="textLabel" destination="t4t-Gm-OYn" collectionClass="NSMutableArray" id="mRi-Qm-fTf"/>
-                        <outletCollection property="textField" destination="CyA-ya-hSQ" collectionClass="NSMutableArray" id="ww2-rN-tR7"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cdQ-xs-UXM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4191" y="-1169"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="Q7D-Gy-Lfc">
@@ -451,11 +332,11 @@
             </objects>
             <point key="canvasLocation" x="4333" y="-162"/>
         </scene>
-        <!--Item-->
+        <!--TicketStub-->
         <scene sceneID="sl8-Ac-pT1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mYD-JL-u0V" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="uEg-18-dhZ"/>
+                    <tabBarItem key="tabBarItem" title="TicketStub" id="uEg-18-dhZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Xg-cd-KCE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -786,8 +667,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Ihx-4O-81r" kind="relationship" relationship="viewControllers" id="Yb8-hh-R5c"/>
                         <segue destination="mYD-JL-u0V" kind="relationship" relationship="viewControllers" id="9mc-rc-T6C"/>
+                        <segue destination="Ihx-4O-81r" kind="relationship" relationship="viewControllers" id="Yb8-hh-R5c"/>
                         <segue destination="fXh-7T-0hk" kind="relationship" relationship="viewControllers" id="Jfp-d1-twj"/>
                     </connections>
                 </tabBarController>
@@ -873,9 +754,7 @@
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

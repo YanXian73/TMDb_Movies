@@ -11,6 +11,8 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageWidth: NSLayoutConstraint!
     @IBOutlet weak var image: UIImageView!
+
+    @IBOutlet weak var checkMarkLabel: UILabel!
     var imageName : String?
     var date : Date!
     
