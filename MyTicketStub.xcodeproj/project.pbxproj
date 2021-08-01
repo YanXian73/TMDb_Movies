@@ -19,6 +19,8 @@
 		0540C9EF26A7EB9C00BFF7EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0540C9EE26A7EB9C00BFF7EF /* Assets.xcassets */; };
 		0540C9F226A7EB9C00BFF7EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0540C9F026A7EB9C00BFF7EF /* LaunchScreen.storyboard */; };
 		0540C9FC26A7FC1A00BFF7EF /* TicketStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0540C9FB26A7FC1A00BFF7EF /* TicketStub.swift */; };
+		055051DD26B71047002CAA9B /* TestCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055051DC26B71047002CAA9B /* TestCollectionViewController.swift */; };
+		055051DF26B71164002CAA9B /* 青檸雷夢.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 055051DE26B71164002CAA9B /* 青檸雷夢.jpg */; };
 		0572335A26AF0EB4004B6C13 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0572335926AF0EB4004B6C13 /* MenuTableViewController.swift */; };
 		0572335C26AF0EFC004B6C13 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0572335B26AF0EFC004B6C13 /* MenuTableViewCell.swift */; };
 		058B430B26B514F0005A3FA7 /* MyTicket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 058B430926B514F0005A3FA7 /* MyTicket.xcdatamodeld */; };
@@ -47,6 +49,8 @@
 		0540C9F126A7EB9C00BFF7EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0540C9F326A7EB9C00BFF7EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0540C9FB26A7FC1A00BFF7EF /* TicketStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketStub.swift; sourceTree = "<group>"; };
+		055051DC26B71047002CAA9B /* TestCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCollectionViewController.swift; sourceTree = "<group>"; };
+		055051DE26B71164002CAA9B /* 青檸雷夢.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "青檸雷夢.jpg"; sourceTree = "<group>"; };
 		0572335926AF0EB4004B6C13 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		0572335B26AF0EFC004B6C13 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		058B430A26B514F0005A3FA7 /* MyTicket.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyTicket.xcdatamodel; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 				05BE20B626A95C5600B1A497 /* ScrollViewController.swift */,
 				052B6F6526B1418F00B1B4EE /* MyMoviesTableViewController.swift */,
 				0572335926AF0EB4004B6C13 /* MenuTableViewController.swift */,
+				055051DC26B71047002CAA9B /* TestCollectionViewController.swift */,
 				05A5E48E26B3A4D600CE02F6 /* ShowMovieTableViewController.swift */,
 				052BC7BF26AC2FFD006AFCC8 /* MoviesViewController.swift */,
 				05E36DE526AA8B3B00F9E693 /* MapViewController.swift */,
@@ -137,6 +142,7 @@
 				0540C9E726A7EB9B00BFF7EF /* SceneDelegate.swift */,
 				0540C9EB26A7EB9B00BFF7EF /* Main.storyboard */,
 				0540C9EE26A7EB9C00BFF7EF /* Assets.xcassets */,
+				055051DE26B71164002CAA9B /* 青檸雷夢.jpg */,
 				0540C9F026A7EB9C00BFF7EF /* LaunchScreen.storyboard */,
 				0540C9F326A7EB9C00BFF7EF /* Info.plist */,
 			);
@@ -211,6 +217,7 @@
 			files = (
 				0540C9F226A7EB9C00BFF7EF /* LaunchScreen.storyboard in Resources */,
 				0540C9EF26A7EB9C00BFF7EF /* Assets.xcassets in Resources */,
+				055051DF26B71164002CAA9B /* 青檸雷夢.jpg in Resources */,
 				0540C9ED26A7EB9B00BFF7EF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,6 +246,7 @@
 				05E36DE626AA8B3B00F9E693 /* MapViewController.swift in Sources */,
 				058B430B26B514F0005A3FA7 /* MyTicket.xcdatamodeld in Sources */,
 				0540C9E626A7EB9B00BFF7EF /* AppDelegate.swift in Sources */,
+				055051DD26B71047002CAA9B /* TestCollectionViewController.swift in Sources */,
 				0540C9E826A7EB9B00BFF7EF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

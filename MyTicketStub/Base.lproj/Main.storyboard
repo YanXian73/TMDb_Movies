@@ -27,40 +27,40 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" semanticContentAttribute="spatial" reuseIdentifier="cell" id="zoG-k3-AA3" customClass="MyCollectionViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="zoG-k3-AA3" customClass="MyCollectionViewCell" customModule="MyTicketStub" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" semanticContentAttribute="spatial" insetsLayoutMarginsFromSafeArea="NO" id="icc-eR-ekA">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="icc-eR-ekA">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ywi-El-psP">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="LEt-vY-i2b"/>
-                                                        <constraint firstAttribute="width" secondItem="Ywi-El-psP" secondAttribute="height" multiplier="1:1" id="yyF-be-fM3"/>
+                                                        <constraint firstAttribute="width" secondItem="Ywi-El-psP" secondAttribute="height" multiplier="1:1" id="MZM-88-2df"/>
+                                                        <constraint firstAttribute="width" constant="100" id="NZY-3X-KQ3"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RS-j7-JFF">
-                                                    <rect key="frame" x="3" y="3" width="42" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="9RS-j7-JFF" firstAttribute="leading" secondItem="icc-eR-ekA" secondAttribute="leading" constant="3" id="Jcz-EW-9T7"/>
-                                                <constraint firstItem="Ywi-El-psP" firstAttribute="leading" secondItem="icc-eR-ekA" secondAttribute="leading" id="Lqq-MB-M4E"/>
-                                                <constraint firstAttribute="bottom" secondItem="Ywi-El-psP" secondAttribute="bottom" id="P71-NB-3HG"/>
-                                                <constraint firstItem="9RS-j7-JFF" firstAttribute="top" secondItem="icc-eR-ekA" secondAttribute="top" constant="3" id="S5U-jq-8PT"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ywi-El-psP" secondAttribute="trailing" id="kiU-xg-Vam"/>
-                                                <constraint firstItem="Ywi-El-psP" firstAttribute="top" secondItem="icc-eR-ekA" secondAttribute="top" id="rhI-ZD-udw"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ywi-El-psP" secondAttribute="trailing" id="EhL-ye-EUV"/>
+                                                <constraint firstItem="9RS-j7-JFF" firstAttribute="top" secondItem="icc-eR-ekA" secondAttribute="top" constant="8" id="K8u-hL-y33"/>
+                                                <constraint firstItem="9RS-j7-JFF" firstAttribute="leading" secondItem="icc-eR-ekA" secondAttribute="leading" constant="8" id="Zua-wc-uSP"/>
+                                                <constraint firstItem="Ywi-El-psP" firstAttribute="top" secondItem="icc-eR-ekA" secondAttribute="top" id="aCZ-Lp-gmE"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ywi-El-psP" secondAttribute="bottom" id="fQs-Kt-MS6"/>
+                                                <constraint firstItem="Ywi-El-psP" firstAttribute="leading" secondItem="icc-eR-ekA" secondAttribute="leading" id="fqS-Q1-jRh"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="checkMarkLabel" destination="9RS-j7-JFF" id="yM9-vw-iSm"/>
                                             <outlet property="image" destination="Ywi-El-psP" id="dbR-kg-KQE"/>
-                                            <outlet property="imageWidth" destination="LEt-vY-i2b" id="crH-Qa-dNs"/>
+                                            <outlet property="imageWidth" destination="NZY-3X-KQ3" id="ddP-Qe-Nlg"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -90,7 +90,6 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="collectionLayout" destination="UGB-Rh-Y8I" id="iLn-PY-B71"/>
                         <outlet property="collectionView" destination="ZZV-MD-2xg" id="rzf-Cw-JU6"/>
                         <outlet property="deleteItem" destination="JfB-Kq-nj1" id="rvc-Qx-ut6"/>
                     </connections>
@@ -332,6 +331,54 @@
             </objects>
             <point key="canvasLocation" x="4333" y="-162"/>
         </scene>
+        <!--Test Collection View Controller-->
+        <scene sceneID="sLL-jf-oZw">
+            <objects>
+                <collectionViewController id="awm-uh-LmN" customClass="TestCollectionViewController" customModule="MyTicketStub" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="1WS-Ox-EHu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5QS-x8-tO4">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="eee" id="WSZ-jx-s2G" customClass="MyCollectionViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="m3H-sM-9Yq">
+                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a6V-Rg-uuZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="a6V-Rg-uuZ" secondAttribute="bottom" id="JYm-gc-tJV"/>
+                                        <constraint firstItem="a6V-Rg-uuZ" firstAttribute="leading" secondItem="m3H-sM-9Yq" secondAttribute="leading" id="MvD-TB-46g"/>
+                                        <constraint firstAttribute="trailing" secondItem="a6V-Rg-uuZ" secondAttribute="trailing" id="Opj-Ma-AUH"/>
+                                        <constraint firstItem="a6V-Rg-uuZ" firstAttribute="top" secondItem="m3H-sM-9Yq" secondAttribute="top" id="vC1-ju-eIl"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <connections>
+                                    <outlet property="testimage" destination="a6V-Rg-uuZ" id="3IM-eE-5UI"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="awm-uh-LmN" id="Xyu-Tm-I0G"/>
+                            <outlet property="delegate" destination="awm-uh-LmN" id="cxa-3y-int"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BVM-2i-F3T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2084" y="-859"/>
+        </scene>
         <!--TicketStub-->
         <scene sceneID="sl8-Ac-pT1">
             <objects>
@@ -349,7 +396,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nHM-zZ-jSE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1734.7826086956522" y="-162.05357142857142"/>
+            <point key="canvasLocation" x="1673" y="-162"/>
         </scene>
         <!--詳細資訊-->
         <scene sceneID="6BK-3g-Vaa">

@@ -9,6 +9,9 @@ import UIKit
 
 class MyCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var testimage: UIImageView!
+    
+    
     @IBOutlet weak var imageWidth: NSLayoutConstraint!
     @IBOutlet weak var image: UIImageView!
 
@@ -16,10 +19,10 @@ class MyCollectionViewCell: UICollectionViewCell {
     var imageName : String?
     var date : Date!
     
-    static let width = floor((UIScreen.main.bounds.width - 3 * 2) / 3)  // 設定每一排3張照片 間距是3，有兩個間距
+   static let width = floor((UIScreen.main.bounds.width - 3 * 2) / 3)  // 設定每一排3張照片 間距是3，有兩個間距
         override func awakeFromNib() {
             super.awakeFromNib() // cell產生前都會先執行
             imageWidth.constant = Self.width
         }
-    }
+  }
 

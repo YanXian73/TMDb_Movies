@@ -19,7 +19,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
     @IBOutlet weak var collectionView: UICollectionView!
     
     // var collectionView = UICollectionView()
-    
+    var prepareDeleteItem : [MyCollectionViewCell] = []
     let picker = UIImagePickerController()
 
     var isEditingModel: Bool = false
@@ -29,7 +29,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.queryFromDB()
+     self.queryFromDB()
 
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -42,8 +42,33 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
         }*/
     }
     @IBAction func deleteBtn(_ sender: Any) {
-        
-        
+        let moc = CoreDataHelper.shared.managedObjectContext()
+        if isEditing == true {
+            
+            if  let  selectedCells = collectionView.indexPathsForSelectedItems {
+                let  items =  selectedCells.map { $0.item }.sorted() .reversed()
+                for item in items {
+                   let ticket =  self.data.remove(at: item)
+                    moc.performAndWait {
+                        moc.delete(ticket)
+                    }
+                }
+                CoreDataHelper.shared.saveContext()
+                self.deleteItem.isEnabled = false
+                self.collectionView.reloadData()
+            }
+        }
+//            var cell = MyCollectionViewCell()
+//         //   var ticket = TicketStub(context: moc)
+//            let indexPath = collectionView.indexPathsForVisibleItems
+//
+//            for index in indexPath {
+//                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: index) as! MyCollectionViewCell
+//            }
+//            if cell.checkMarkLabel.text == "⬤" {
+//
+//            }
+//
         
         
     }
@@ -53,7 +78,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
         if editing == false {
             self.deleteItem.isEnabled = false
         }
-        collectionView.allowsMultipleSelection = editing
+        collectionView.allowsMultipleSelection = editing // 允許多選
         let indexPaths = collectionView.indexPathsForVisibleItems // collectionView 可見的Items 有幾個indexPaths
         for index in indexPaths {
             let cell = collectionView.cellForItem(at: index) as! MyCollectionViewCell
@@ -89,11 +114,14 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
     }
     
     @IBAction func camera(_ sender: Any) {
-       
+        if !isEditing {
         picker.sourceType = .savedPhotosAlbum
       //  picker.sourceType = .camera
         self.present(picker, animated: true, completion: nil)
         picker.delegate = self
+        }else {
+            
+        }
     }
     
 //MARK:UIImagePickerControllerDelegate & UINavigationControllerDelegate
@@ -116,6 +144,10 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
     
     
     //MARK:UICollectionViewDataSource, UICollectionViewDelegate
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return self.data.count
@@ -124,9 +156,12 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MyCollectionViewCell
-        //  cell.textLabel.text = text[indexPath.row]
-        cell.image.image = self.data[indexPath.row].image()
-        cell.checkMarkLabel.text = ""
+        if !isEditing {
+            cell.image.image = self.data[indexPath.row].image()
+           cell.checkMarkLabel.text = ""
+        }else{
+            cell.checkMarkLabel.text = "⭕"
+        }
      //   cell.dateLabel.text = self.data[indexPath.row].date
 //        self.collectionLayout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 20)
 //        self.collectionLayout.minimumLineSpacing = 5 //設定cell與cell間的縱距
@@ -138,19 +173,42 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
         if !isEditing {
             self.deleteItem.isEnabled = false
         }else{
-            self.deleteItem.isEnabled = true
-            
-            let cell = collectionView.cellForItem(at: indexPath) as! MyCollectionViewCell
-            cell.checkMarkLabel.text = "⬤"
+            if let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell {
+                cell.checkMarkLabel.text = "🔴"
+                self.prepareDeleteItem.append(cell)
+                self.deleteItem.isEnabled = true
+            }else{
+                self.deleteItem.isEnabled = false
+            }
         }
         
     }
     // 告訴Delegate 沒有被選擇的項目
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-         let selectedItem = collectionView.indexPathsForVisibleItems
-             if selectedItem.count == 0 {
+        let cell = collectionView.cellForItem(at: indexPath) as! MyCollectionViewCell
+      
+        if !isEditing  {
             self.deleteItem.isEnabled = false
+            cell.checkMarkLabel.text = ""
+        }else {
+          self.prepareDeleteItem.removeFirst()
+            cell.checkMarkLabel.text = "⭕"
+            if self.prepareDeleteItem.count == 0 {
+                self.deleteItem.isEnabled = false
+            }
         }
     }
+//        let items = collectionView.indexPathsForVisibleItems
+//        if items.count == 0 {
+//            self.deleteItem.isEnabled = false
+//            let cell = collectionView.cellForItem(at: indexPath) as! MyCollectionViewCell
+//            cell.checkMarkLabel.text = ""
+//        }else if isEditing == true ,items.count != 0{
+//            self.deleteItem.isEnabled = true
+//            let cell = collectionView.cellForItem(at: indexPath) as! MyCollectionViewCell
+//            cell.checkMarkLabel.text = "⭕"
+//        }
+//    }
+    
 }
 
