@@ -8,38 +8,37 @@ import CoreData
 import UIKit
 
 class FirstViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate, ScrollViewControllerDeleage {
+   
     func didupdateView( ticketStub: TicketStub){
-        data.append(ticketStub)
-        CoreDataHelper.shared.saveContext() //存資料到DB
-        self.collectionView.reloadData()
+        if let index = data.firstIndex(of: ticketStub){
+            data[index] = ticketStub
+        }else{
+            data.append(ticketStub)
+        }
+      CoreDataHelper.shared.saveContext() //存資料到DB
+      self.collectionView.reloadData()
     }
     @IBOutlet weak var deleteItem: UIBarButtonItem!
     
     @IBOutlet weak var collectionLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    // var collectionView = UICollectionView()
+  
     var prepareDeleteItem : [MyCollectionViewCell] = []
     let picker = UIImagePickerController()
-
-    var isEditingModel: Bool = false
     
     var data : [TicketStub]!
     
+    var images = [UIImage]() // test
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+   //  images.append(UIImage(named: "青檸雷夢.jpg") ?? UIImage())  // test
         
-     self.queryFromDB()
-
+       self.queryFromDB()
         collectionView.dataSource = self
         collectionView.delegate = self
         self.navigationItem.leftBarButtonItem = editButtonItem
-       /*
-        func didupdateView( pickerData: PickerData){
-            data.append(pickerData)
-            
-            self.collectionView.reloadData()
-        }*/
+        
     }
     @IBAction func deleteBtn(_ sender: Any) {
         let moc = CoreDataHelper.shared.managedObjectContext()
@@ -48,7 +47,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
             if  let  selectedCells = collectionView.indexPathsForSelectedItems {
                 let  items =  selectedCells.map { $0.item }.sorted() .reversed()
                 for item in items {
-                   let ticket =  self.data.remove(at: item)
+                    let ticket =  self.data.remove(at: item)
                     moc.performAndWait {
                         moc.delete(ticket)
                     }
@@ -83,18 +82,22 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
         for index in indexPaths {
             let cell = collectionView.cellForItem(at: index) as! MyCollectionViewCell
             cell.checkMarkLabel.text = editing ? "⭕" : ""
-            
+
         }
         //collectionView.beginInteractiveMovementForItem(at: <#T##IndexPath#>)
         
     }
-    @IBAction func goToScrollView(_ sender: Any) {
-        if let scrollVC = storyboard?.instantiateViewController(withIdentifier: "scrollVC") as? ScrollViewController {
-           
-            self.navigationController?.pushViewController(scrollVC, animated: true)
-        }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "segueScrollVC" {
+//            if let scrollVC = segue.destination as? ScrollViewController,
+//               let index = collectionView.indexPathsForSelectedItems {
+//
+//            }
+//        }
+//    }
+  
         
-    }
+    
     //MARK: Core Data
     func queryFromDB()  {
         let moc = CoreDataHelper.shared.managedObjectContext()
@@ -129,20 +132,24 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage ,
            let scrollVC = storyboard?.instantiateViewController(withIdentifier: "scrollVC") as? ScrollViewController {
-          //  UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil) //存到相簿裡
+            //  UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil) //存到相簿裡
             scrollVC.delegate = self
             scrollVC.image = image
+            scrollVC.isNewImage = true
+            
+            let naviC = UINavigationController(rootViewController: scrollVC)
+            scrollVC.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: scrollVC, action: #selector(cancel))
+            scrollVC.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: scrollVC, action: #selector(scrollVC.done))
             self.dismiss(animated: true, completion:nil) //關閉拍照選擇視窗
-            present(scrollVC, animated: true, completion: nil)
-          //  self.navigationController?.pushViewController(scrollVC, animated: true)
-        
+            present(naviC, animated: true, completion: nil)
+            //  self.navigationController?.pushViewController(scrollVC, animated: true)
         }
-    //    if let scVC = storyboard?.instantiateViewController(withIdentifier: "secondVC") as? SecondViewController {
-      //  }
-      //  collectionView.reloadInputViews()
     }
+    @objc func cancel(){
+          dismiss(animated: true, completion: nil)
+      }
     
-    
+   
     //MARK:UICollectionViewDataSource, UICollectionViewDelegate
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -151,27 +158,42 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return self.data.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MyCollectionViewCell
+     //   cell.testimage.image = self.images[indexPath.row] // test
         if !isEditing {
             cell.image.image = self.data[indexPath.row].image()
-           cell.checkMarkLabel.text = ""
+            cell.checkMarkLabel.text = ""
         }else{
-            cell.checkMarkLabel.text = "⭕"
+         //   cell.checkMarkLabel.text = "⭕"
         }
+        return cell
+        
+        
      //   cell.dateLabel.text = self.data[indexPath.row].date
 //        self.collectionLayout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 20)
 //        self.collectionLayout.minimumLineSpacing = 5 //設定cell與cell間的縱距
         
-        return cell
     }
     //告訴Delegate被點選到的項目,要執行的動作
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isEditing {
             self.deleteItem.isEnabled = false
+            if let scrollVC = storyboard?.instantiateViewController(identifier: "scrollVC") as? ScrollViewController
+            {
+                scrollVC.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: scrollVC, action: #selector(scrollVC.done))
+                scrollVC.image = self.data[indexPath.row].image()!
+                scrollVC.currentTicket = self.data[indexPath.row]
+                scrollVC.delegate = self
+                //                scrollVC.textField.text = self.data[indexPath.row].title
+                //                scrollVC.textView.text = self.data[indexPath.row].contentText
+                //   scrollVC.datePicker.date = timeStringToDate(self.data[indexPath.row].date)
+                self.navigationController?.pushViewController(scrollVC, animated: true)
+            }
         }else{
             if let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell {
                 cell.checkMarkLabel.text = "🔴"

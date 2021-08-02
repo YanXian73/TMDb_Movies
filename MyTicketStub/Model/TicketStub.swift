@@ -13,9 +13,11 @@ class TicketStub : NSManagedObject {
     @NSManaged var title : String?
     @NSManaged var date : String
     @NSManaged var imageName: String?
-    @NSManaged var text : String?
+    @NSManaged var contentText : String?
     
-    
+    static func == (lhs: TicketStub, rhs: TicketStub) -> Bool {
+        return lhs.id == rhs.id
+    }
     func image() -> UIImage? {
         if let imagePath = self.imageName {
             let home = URL(fileURLWithPath: NSHomeDirectory()) //利用URL物件組路徑
