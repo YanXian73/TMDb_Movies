@@ -10,7 +10,7 @@ protocol ScrollViewControllerDeleage: AnyObject {
     func didupdateView(ticketStub: TicketStub)
 }
 
-class ScrollViewController: UIViewController, UITextFieldDelegate {
+class ScrollViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet weak var datePicker: UIDatePicker!
 
@@ -35,12 +35,13 @@ class ScrollViewController: UIViewController, UITextFieldDelegate {
         for index in 0...textLabel.count-1 {
             textLabel[index].text = textTitle[index]
         }
+        
         textField.text = currentTicket?.title
         textView.text = currentTicket?.contentText
         datePicker.date = timeStringToDate(currentTicket?.date ?? "\(Date())") ?? Date()
-        
+        textView.delegate = self
         textField.delegate = self
-        textField.placeholder = "必填"
+        textField.placeholder = "主題"
         datePicker.datePickerMode = .dateAndTime
         datePicker.minuteInterval = 10
         //  datePicker.preferredDatePickerStyle = .wheels
@@ -56,6 +57,10 @@ class ScrollViewController: UIViewController, UITextFieldDelegate {
         
         //   self.contentView.layer.cornerRadius = 20
         
+    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.textView.resignFirstResponder()
+        textField.resignFirstResponder()
     }
     func timeStringToDate(_ dateStr:String) ->Date? {
         let dateFormatter = DateFormatter()
@@ -75,9 +80,9 @@ class ScrollViewController: UIViewController, UITextFieldDelegate {
     @IBAction func changeMapPlace(_ sender: Any) {
         
     }
-    @IBAction func cancel(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
+    @objc func cancel(){
+          dismiss(animated: true, completion: nil)
+      }
    @objc func done() {
     
     let ticket : TicketStub
@@ -117,6 +122,7 @@ class ScrollViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder() // 收鍵盤
         return true
     }
+
     /*
     // MARK: - Navigation
 

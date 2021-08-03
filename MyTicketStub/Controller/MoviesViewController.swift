@@ -11,23 +11,31 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet weak var tableView: UITableView!
     
+    enum PageStatus {
+        case LoadingMore
+        case NotLoadingMore
+    }
+    var pageStatus : PageStatus = .NotLoadingMore
+    
     var indexPath : IndexPath?
     var movieData = [MoviesData]()
-    
+    var page : Int = 1
+    var totalPages: Int!
     var queue = OperationQueue()
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-     //  getMoviesInfo()
+     
         
     }
     override func viewDidLoad() {
-        
-        queue.maxConcurrentOperationCount = 2
         super.viewDidLoad()
+        queue.maxConcurrentOperationCount = 2
         tableView.rowHeight = 175
         tableView.dataSource = self
         tableView.delegate = self
+        
+      
         
         
         /*
@@ -70,19 +78,20 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
     
-    func getMoviesInfo(){
+    func getMoviesInfo(pages: Int){
         var url : URL?
         
+        let region = "&region=TW"
         switch indexPath?.row {
-        case 0: // 即將上映
-            url = URL(string: "https://api.themoviedb.org/3/movie/upcoming?api_key=39ba2275337b048cb87893b4520b0c94&language=zh-TW&page=1&region=TW")
+        case 0: // 最新的電影
+            url = URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=39ba2275337b048cb87893b4520b0c94&language=zh-TW\(region)&sort_by=release_date.desc&include_adult=false&include_video=false&page=\(page)&with_watch_monetization_types=flatrate")
         case 1: // 現正上映中
-            url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=39ba2275337b048cb87893b4520b0c94&language=zh-TW&page=1&region=TW")
+            url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=39ba2275337b048cb87893b4520b0c94&language=zh-TW&page=\(pages)\(region)")
         case 2: // 最受歡迎電影
             url = URL(string:
-                        "https://api.themoviedb.org/3/movie/popular?api_key=39ba2275337b048cb87893b4520b0c94&language=zh-TW&page=1&region=TW")
+                        "https://api.themoviedb.org/3/movie/popular?api_key=39ba2275337b048cb87893b4520b0c94&language=zh-TW&page=\(pages)\(region)")
         default:  //最高評分電影
-            url = URL(string: "https://api.themoviedb.org/3/movie/top_rated?api_key=39ba2275337b048cb87893b4520b0c94&language=zh-TW&page=1&region=TW")
+            url = URL(string: "https://api.themoviedb.org/3/movie/top_rated?api_key=39ba2275337b048cb87893b4520b0c94&language=zh-TW&page=\(pages)\(region)")
         }
         
         guard let requestURL = url
@@ -96,14 +105,27 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             
             if let data = data, let item = try? decoder.decode(Item.self, from: data) {
-                self.movieData = item.results
-                DispatchQueue.main.async { //下載完成之後要重新更新畫面
-                    self.tableView.reloadData()
+                self.movieData += item.results
+                self.page = item.page + 1
+                self.totalPages = item.total_pages
+                
+                if self.page <= self.totalPages {
+                    self.getMoviesInfo(pages: self.page)
                 }
+                DispatchQueue.main.async { //下載完成之後要重新更新畫面
+                    if self.movieData.count < 50 {
+                        self.tableView.reloadData()
+                    }
+                    
+                }
+                
             }
-    }
+        }
         session.resume()
+        
+        
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMovieTVC" {
             if let showMovieVC = segue.destination as? ShowMovieTableViewController,
@@ -136,7 +158,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.movieImageView.image = nil //cell可能被reuse，所以要先清除原本的照片，否則會看到原照片的殘影
         //取得TMDB網址的圖片
         if let imageKey = self.movieData[indexPath.row].poster_path {
-            if let imageURL = URL(string: "https://image.tmdb.org/t/p/w500" + imageKey) {
+            if let imageURL = URL(string: "https://image.tmdb.org/t/p/w342" + imageKey) {
                 
                 let operation = ImageOperation(url: imageURL, indexPath: indexPath, tableView: tableView)
                 self.queue.addOperation(operation)
@@ -151,7 +173,6 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //                session.resume()
             }
         }
-       
         return cell
     }
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -169,3 +190,24 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     */
 
 }
+extension MoviesViewController : UIScrollViewDelegate {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        guard scrollView.contentSize.height > self.tableView.frame.height,
+              self.pageStatus == .NotLoadingMore else { return }
+        
+        if scrollView.contentSize.height - (scrollView.frame.size.height + scrollView.contentOffset.y) <= -10 {
+            
+            self.pageStatus = .LoadingMore
+            //     self.tableView.reloadData
+            // 模擬 Call API 的時間
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.pageStatus = .NotLoadingMore
+                self.tableView.reloadData()
+            }
+        }
+        
+    }
+}
+
+
+

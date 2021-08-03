@@ -138,17 +138,13 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
             scrollVC.isNewImage = true
             
             let naviC = UINavigationController(rootViewController: scrollVC)
-            scrollVC.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: scrollVC, action: #selector(cancel))
+            scrollVC.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: scrollVC, action: #selector(scrollVC.cancel))
             scrollVC.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: scrollVC, action: #selector(scrollVC.done))
             self.dismiss(animated: true, completion:nil) //關閉拍照選擇視窗
             present(naviC, animated: true, completion: nil)
             //  self.navigationController?.pushViewController(scrollVC, animated: true)
         }
     }
-    @objc func cancel(){
-          dismiss(animated: true, completion: nil)
-      }
-    
    
     //MARK:UICollectionViewDataSource, UICollectionViewDelegate
     
@@ -166,7 +162,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MyCollectionViewCell
      //   cell.testimage.image = self.images[indexPath.row] // test
         if !isEditing {
-            cell.image.image = self.data[indexPath.row].image()
+            cell.image.image = self.data[indexPath.row].thumbnailImage()
             cell.checkMarkLabel.text = ""
         }else{
          //   cell.checkMarkLabel.text = "⭕"

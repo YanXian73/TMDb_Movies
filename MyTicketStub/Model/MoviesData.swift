@@ -19,7 +19,11 @@ struct MoviesData : Codable{
     var overview : String?
     var backdrop_path : String?
     
+    
 }
 struct Item: Codable {
     var results : [MoviesData]
+    var total_pages : Int
+    var page : Int
+    var total_results : Int
 }

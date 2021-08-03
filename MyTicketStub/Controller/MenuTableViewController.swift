@@ -11,7 +11,7 @@ class MenuTableViewController: UITableViewController {
     
   //  var menuData = [MoviesData]()
 
-    let moviesCellTitle = ["即將上映", "現正放映", "最受歡迎電影", "最受好評電影"]
+    let moviesCellTitle = ["最新的電影", "現正放映", "最受歡迎電影", "最受好評電影"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class MenuTableViewController: UITableViewController {
         if let movieVC = segue.destination as? MoviesViewController,
            let index = tableView.indexPathForSelectedRow {
             movieVC.indexPath = index
-            movieVC.getMoviesInfo()
+            movieVC.getMoviesInfo(pages: movieVC.page)
         }
     }
 
