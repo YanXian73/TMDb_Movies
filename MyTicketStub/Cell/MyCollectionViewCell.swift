@@ -23,5 +23,7 @@ class MyCollectionViewCell: UICollectionViewCell {
             super.awakeFromNib() // cell產生前都會先執行
            imageWidth.constant = Self.width
         }
-  }
+    @IBAction func addImage(_ sender: Any) {
+    }
+}
 

@@ -12,10 +12,11 @@ class MenuTableViewController: UITableViewController {
   //  var menuData = [MoviesData]()
 
     let moviesCellTitle = ["最新的電影", "現正放映", "最受歡迎電影", "最受好評電影"]
-    
+    let images : [UIImage] = [UIImage(named: "NEW.jpg")!, UIImage(named: "NewPlay.png")!, UIImage(named: "Hot.png")!, UIImage(named: "star.png")!]
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.rowHeight = tableView.frame.height/5
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -69,7 +70,7 @@ class MenuTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! MenuTableViewCell
         
-     
+        cell.menuImageView.image = self.images[indexPath.row]
         cell.menuLabel.text = moviesCellTitle[indexPath.row]
         
         return cell

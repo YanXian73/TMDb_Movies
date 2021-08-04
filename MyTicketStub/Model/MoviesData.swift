@@ -4,7 +4,7 @@
 //
 //  Created by 吳彥賢 on 2021/7/24.
 //
-
+import CoreData
 import Foundation
 //解碼json資料要繼承 Codable解碼, Decodable
 struct MoviesData : Codable{
@@ -27,3 +27,4 @@ struct Item: Codable {
     var page : Int
     var total_results : Int
 }
+

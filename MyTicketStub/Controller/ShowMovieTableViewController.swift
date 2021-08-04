@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import CoreData
+protocol ShowMovieTableViewControllerDelegate: AnyObject {
+    func diddidUpdate(movieData:MoviesData)
+}
 
 class ShowMovieTableViewController: UITableViewController {
     
  
-
+    @IBOutlet weak var myFavoriteOutlet: UIBarButtonItem!
+    weak var delegate : ShowMovieTableViewControllerDelegate?
     let queue = OperationQueue()
     var currentMovie =  MoviesData()
     override func viewDidLoad() {
@@ -23,7 +28,23 @@ class ShowMovieTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-
+    @IBAction func addMyFavorite(_ sender: Any) {
+        if let myMovieTVC = storyboard?.instantiateViewController(withIdentifier: "myMovie") as? MyMoviesTableViewController {
+            let moc = MyCoreData.shared.managedObjectContext()
+            let data = MyMovieList(context: moc)
+            
+            data.original_title = myMovieTVC.currentMovie.original_title
+            data.title = myMovieTVC.currentMovie.title
+            data.backdrop_path = myMovieTVC.currentMovie.backdrop_path
+            data.poster_path = myMovieTVC.currentMovie.poster_path
+            data.overview = myMovieTVC.currentMovie.overview
+            data.release_date = myMovieTVC.currentMovie.release_date
+            MyCoreData.shared.saveContext()
+            
+        }
+        
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

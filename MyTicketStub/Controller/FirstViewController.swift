@@ -7,7 +7,7 @@
 import CoreData
 import UIKit
 
-class FirstViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate, ScrollViewControllerDeleage {
+class FirstViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate, ScrollViewControllerDelegate {
    
     func didupdateView( ticketStub: TicketStub){
         if let index = data.firstIndex(of: ticketStub){
@@ -18,6 +18,8 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
       CoreDataHelper.shared.saveContext() //存資料到DB
       self.collectionView.reloadData()
     }
+   
+    @IBOutlet weak var selectListOutlet: UISegmentedControl!
     @IBOutlet weak var deleteItem: UIBarButtonItem!
     
     @IBOutlet weak var collectionLayout: UICollectionViewFlowLayout!
@@ -27,19 +29,20 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
     let picker = UIImagePickerController()
     
     var data : [TicketStub]!
+    var movieData: MoviesData?
     
     var images = [UIImage]() // test
     
     override func viewDidLoad() {
         super.viewDidLoad()
    //  images.append(UIImage(named: "青檸雷夢.jpg") ?? UIImage())  // test
-        
        self.queryFromDB()
         collectionView.dataSource = self
         collectionView.delegate = self
         self.navigationItem.leftBarButtonItem = editButtonItem
         
     }
+  
     @IBAction func deleteBtn(_ sender: Any) {
         let moc = CoreDataHelper.shared.managedObjectContext()
         if isEditing == true {
@@ -164,6 +167,8 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
         if !isEditing {
             cell.image.image = self.data[indexPath.row].thumbnailImage()
             cell.checkMarkLabel.text = ""
+            
+            
         }else{
          //   cell.checkMarkLabel.text = "⭕"
         }

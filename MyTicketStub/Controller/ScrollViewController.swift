@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol ScrollViewControllerDeleage: AnyObject {
+protocol ScrollViewControllerDelegate: AnyObject {
     func didupdateView(ticketStub: TicketStub)
 }
 
@@ -19,7 +19,7 @@ class ScrollViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var textView: UITextView!
     
-    weak var delegate : ScrollViewControllerDeleage?
+    weak var delegate : ScrollViewControllerDelegate?
  
     var currentTicket: TicketStub?
     let moc = CoreDataHelper.shared.managedObjectContext()

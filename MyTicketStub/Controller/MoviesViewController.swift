@@ -109,13 +109,14 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.page = item.page + 1
                 self.totalPages = item.total_pages
                 
-                if self.page <= self.totalPages {
-                    self.getMoviesInfo(pages: self.page)
-                }
+//                if self.page <= self.totalPages {
+//                    self.getMoviesInfo(pages: self.page)
+//                }
                 DispatchQueue.main.async { //下載完成之後要重新更新畫面
-                    if self.movieData.count < 50 {
-                        self.tableView.reloadData()
-                    }
+                    //       if self.movieData.count < 50 {
+                    self.tableView.reloadData()
+                    self.pageStatus = .NotLoadingMore
+                    //     }
                     
                 }
                 
@@ -197,14 +198,18 @@ extension MoviesViewController : UIScrollViewDelegate {
         
         if scrollView.contentSize.height - (scrollView.frame.size.height + scrollView.contentOffset.y) <= -10 {
             
-            self.pageStatus = .LoadingMore
-            //     self.tableView.reloadData
-            // 模擬 Call API 的時間
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.pageStatus = .NotLoadingMore
-                self.tableView.reloadData()
+            if self.page <= self.totalPages {
+                self.pageStatus = .LoadingMore
+                self.getMoviesInfo(pages: self.page)
             }
         }
+        
+        //     self.tableView.reloadData
+        // 模擬 Call API 的時間
+        //            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        //                self.pageStatus = .NotLoadingMore
+        //                self.tableView.reloadData()
+//            }
         
     }
 }

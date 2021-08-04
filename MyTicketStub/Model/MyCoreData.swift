@@ -6,9 +6,9 @@
 import UIKit
 import CoreData
 
-class CoreDataHelper: NSObject {
+class MyCoreData: NSObject {
     
-    static let shared = CoreDataHelper()
+    static let shared = MyCoreData()
     
     override internal init() {
         
@@ -27,12 +27,12 @@ class CoreDataHelper: NSObject {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
          */
-        let container = NSPersistentContainer(name: "MyTicket")
+        let container = NSPersistentContainer(name: "MyMovieList")
         let description = NSPersistentStoreDescription()
         //設定sqlite存放位置
         var sqlUrl = URL(fileURLWithPath: NSHomeDirectory())
         sqlUrl.appendPathComponent("Documents")
-        sqlUrl.appendPathComponent("MyTicketStub.sqlite")
+        sqlUrl.appendPathComponent("MyMovieList.sqlite")
         description.url = sqlUrl
         //如果要關閉journal mode，只產生一個sqlite檔案，可以打開這個選項
         //description.setOption(["journal_mode":"DELETE"] as NSDictionary, forKey: NSSQLitePragmasOption)
