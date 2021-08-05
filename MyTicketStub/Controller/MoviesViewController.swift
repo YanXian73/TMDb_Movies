@@ -66,17 +66,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
          */
        
     }
-    @IBAction func addMyMovieList(_ sender: Any) {
-        let myMovie = MyMoviesTableViewController()
-        var  movie = MoviesData()
-        
-        //用Button的方式 拿不到 tableView.indexPathForSelectedRow
-//        if  let  index =  tableView.indexPathForSelectedRow  {
-//            movie = self.movieData[index.row]
-//            myMovie.currentMovie = movie
-//        }
-        
-    }
+
     
     func getMoviesInfo(pages: Int){
         var url : URL?

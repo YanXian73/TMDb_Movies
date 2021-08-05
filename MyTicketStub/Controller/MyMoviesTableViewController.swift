@@ -8,8 +8,8 @@ import CoreData
 import UIKit
 
 class MyMoviesTableViewController: UITableViewController, ShowMovieTableViewControllerDelegate {
-    func diddidUpdate(movieData: MoviesData) {
-        let moc = MyCoreData.shared.managedObjectContext()
+    func didAddRow(movieData: MoviesData) {
+        let moc = CoreDataHelper.shared.managedObjectContext()
         let data = MyMovieList(context: moc)
         data.original_title = movieData.original_title
         data.title = movieData.title
@@ -17,10 +17,10 @@ class MyMoviesTableViewController: UITableViewController, ShowMovieTableViewCont
         data.poster_path = movieData.poster_path
         data.overview = movieData.overview
         data.release_date = movieData.release_date
-        MyCoreData.shared.saveContext()
-        self.myMovieList.append(data)
+        data.vote_average = movieData.vote_average!
+        CoreDataHelper.shared.saveContext()
+
     }
-    let showMovieTVC = ShowMovieTableViewController()
 
     var myMovieList : [MyMovieList]!
     var currentMovie = MoviesData()
@@ -28,17 +28,25 @@ class MyMoviesTableViewController: UITableViewController, ShowMovieTableViewCont
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        showMovieTVC.delegate = self
-        queryFromDB()
         queue.maxConcurrentOperationCount = 2
         tableView.rowHeight = 175
         
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
         
-        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        queryFromDB()
+        self.tableView.reloadData()
+    }
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: true)
+        self.tableView.setEditing(editing, animated: true)
+
     }
     //MARK: Core Data
     func queryFromDB()  {
-        let moc = MyCoreData.shared.managedObjectContext()
+        let moc = CoreDataHelper.shared.managedObjectContext()
         let request = NSFetchRequest<MyMovieList>(entityName: "MyMovieList")
         moc.performAndWait {
             do{
@@ -78,20 +86,23 @@ class MyMoviesTableViewController: UITableViewController, ShowMovieTableViewCont
                 
                 let operation = ImageOperation(url: imageURL, indexPath: indexPath, tableView: tableView)
                 self.queue.addOperation(operation)
-                
-//                let session = URLSession.shared.dataTask(with: request) { data, responds, error in
-//                    if let data = data {
-//                        DispatchQueue.main.async {
-//                            cell.movieImageView.image = UIImage(data: data)
-//                        }
-//                    }
-//                }
-//                session.resume()
+ 
             }
         }
         return cell
     }
-    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+           let movie = self.myMovieList.remove(at: indexPath.row)
+            let moc = CoreDataHelper.shared.managedObjectContext()
+            moc.performAndWait {
+                moc.delete(movie)
+            }
+            CoreDataHelper.shared.saveContext()
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        
+    }
     
 
     /*

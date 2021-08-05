@@ -19,10 +19,9 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
       self.collectionView.reloadData()
     }
    
-    @IBOutlet weak var selectListOutlet: UISegmentedControl!
+  
     @IBOutlet weak var deleteItem: UIBarButtonItem!
     
-    @IBOutlet weak var collectionLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var collectionView: UICollectionView!
   
     var prepareDeleteItem : [MyCollectionViewCell] = []
@@ -35,14 +34,15 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   //  images.append(UIImage(named: "青檸雷夢.jpg") ?? UIImage())  // test
-       self.queryFromDB()
+        //  images.append(UIImage(named: "青檸雷夢.jpg") ?? UIImage())  // test
+        
+        self.queryFromDB()
         collectionView.dataSource = self
         collectionView.delegate = self
         self.navigationItem.leftBarButtonItem = editButtonItem
         
     }
-  
+    
     @IBAction func deleteBtn(_ sender: Any) {
         let moc = CoreDataHelper.shared.managedObjectContext()
         if isEditing == true {
@@ -57,7 +57,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
                 }
                 CoreDataHelper.shared.saveContext()
                 self.deleteItem.isEnabled = false
-                self.collectionView.reloadData()
+                self.collectionView.deleteItems(at: selectedCells)
             }
         }
 //            var cell = MyCollectionViewCell()
@@ -221,17 +221,16 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate & U
             }
         }
     }
-//        let items = collectionView.indexPathsForVisibleItems
-//        if items.count == 0 {
-//            self.deleteItem.isEnabled = false
-//            let cell = collectionView.cellForItem(at: indexPath) as! MyCollectionViewCell
-//            cell.checkMarkLabel.text = ""
-//        }else if isEditing == true ,items.count != 0{
-//            self.deleteItem.isEnabled = true
-//            let cell = collectionView.cellForItem(at: indexPath) as! MyCollectionViewCell
-//            cell.checkMarkLabel.text = "⭕"
-//        }
-//    }
+
     
+}
+extension FirstViewController : UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = floor((UIScreen.main.bounds.width - 3 * 2) / 3)  // 設定每一排3張照片 間距是3，有兩個間距
+        //cell 高度可以跟寬度一樣沒有問題 讓他是1:1比例
+        let cell = CGSize(width: width, height: width)
+        
+        return cell
+    }
 }
 

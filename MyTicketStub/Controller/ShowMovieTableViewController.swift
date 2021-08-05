@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 protocol ShowMovieTableViewControllerDelegate: AnyObject {
-    func diddidUpdate(movieData:MoviesData)
+    func didAddRow(movieData:MoviesData)
 }
 
 class ShowMovieTableViewController: UITableViewController {
@@ -30,17 +30,10 @@ class ShowMovieTableViewController: UITableViewController {
     
     @IBAction func addMyFavorite(_ sender: Any) {
         if let myMovieTVC = storyboard?.instantiateViewController(withIdentifier: "myMovie") as? MyMoviesTableViewController {
-            let moc = MyCoreData.shared.managedObjectContext()
-            let data = MyMovieList(context: moc)
+            self.myFavoriteOutlet.image = UIImage(systemName: "star.fill")
+            self.delegate = myMovieTVC
             
-            data.original_title = myMovieTVC.currentMovie.original_title
-            data.title = myMovieTVC.currentMovie.title
-            data.backdrop_path = myMovieTVC.currentMovie.backdrop_path
-            data.poster_path = myMovieTVC.currentMovie.poster_path
-            data.overview = myMovieTVC.currentMovie.overview
-            data.release_date = myMovieTVC.currentMovie.release_date
-            MyCoreData.shared.saveContext()
-            
+            self.delegate?.didAddRow(movieData: currentMovie)
         }
         
     }
@@ -54,7 +47,7 @@ class ShowMovieTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return 4
     }
 
    
@@ -63,7 +56,7 @@ class ShowMovieTableViewController: UITableViewController {
         let cell0 = tableView.dequeueReusableCell(withIdentifier: "cell0", for: indexPath) as! ShowMovieTableViewCell
         let cell1 = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! ShowMovieTableViewCell
         let cell2 = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ShowMovieTableViewCell
-     
+        let cell3 = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! ShowMovieTableViewCell
        
         
         switch indexPath.row {
@@ -94,15 +87,40 @@ class ShowMovieTableViewController: UITableViewController {
                 }
             }
             return cell1
-        default:
+        case 2:
             if let overView = currentMovie.overview {
                 cell2.overViewLabel.text = overView
             }
             return cell2
+        default :
+            var movieVideo = [MovieVideo]()
+            guard let url = URL(string: "https://api.themoviedb.org/3/movie/\(currentMovie.id ?? 0)/videos?api_key=39ba2275337b048cb87893b4520b0c94&language=eu-US") else {return cell3}
             
+            let request = URLRequest(url: url)
+            let session = URLSession.shared.dataTask(with: request) { data, response, error in
+                let jsonDecoder = JSONDecoder()
+                if let data = data ,let results = try? jsonDecoder.decode(Result.self, from: data),
+                   let ok = results.resultKey, !ok.isEmpty {
+                    movieVideo = ok
+                    if let key = movieVideo[0].key, let site = movieVideo[0].site {
+                        if site == "YouTube" {
+                            let youtubeURL = URL(string: "https://www.youtube.com/watch?v=\(key)")
+                            // UIApplication.shared.open(youtubeURL!, options: [:])
+                            
+                            DispatchQueue.main.async {
+                                cell3.videoBtnOutlet.setTitle("\(youtubeURL!)", for: .normal)
+                                cell3.label.text = "預告片"
+                            }
+                        }
+                    }
+                }
+            }
+            session.resume()
+            
+           
+            return cell3
         }
     }
-   
 
     /*
     // Override to support conditional editing of the table view.
@@ -120,7 +138,7 @@ class ShowMovieTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 
