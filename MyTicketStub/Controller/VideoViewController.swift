@@ -6,16 +6,47 @@
 //
 
 import UIKit
+import WebKit
 
 class VideoViewController: UIViewController {
 
+    @IBOutlet weak var webView: WKWebView!
+    var currentMovie = MoviesData()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+   
     }
-    
-
+    func showVideo(currentMovie: MoviesData) {
+        
+        var movieVideo = [MovieVideo]()
+        guard let url = URL(string: "https://api.themoviedb.org/3/movie/\(currentMovie.id ?? 0)/videos?api_key=39ba2275337b048cb87893b4520b0c94&language=eu-US") else {return }
+        
+        let request = URLRequest(url: url)
+        let session = URLSession.shared.dataTask(with: request) { data, response, error in
+            let jsonDecoder = JSONDecoder()
+            if let data = data, let results = try? jsonDecoder.decode(Result.self, from: data),
+               let ok = results.resultKey, !ok.isEmpty {
+                movieVideo = ok
+                if let key = movieVideo[0].key, let site = movieVideo[0].site {
+                    if site == "YouTube" {
+                        let youtubeURL = URL(string: "https://www.youtube.com/watch?v=\(key)")
+                        let request = URLRequest(url: youtubeURL!)
+                        DispatchQueue.main.async {
+                            self.webView.load(request)
+                        }
+                    }
+                }
+            }
+            if let error = error {
+                print("沒有預告片\(error)")
+            }
+        }
+        session.resume()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.webView.stopLoading()
+    }
     /*
     // MARK: - Navigation
 

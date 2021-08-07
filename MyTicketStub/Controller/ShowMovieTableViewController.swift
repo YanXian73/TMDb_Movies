@@ -57,7 +57,6 @@ class ShowMovieTableViewController: UITableViewController {
         let cell1 = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! ShowMovieTableViewCell
         let cell2 = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ShowMovieTableViewCell
         let cell3 = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! ShowMovieTableViewCell
-       
         
         switch indexPath.row {
         case 0:
@@ -67,6 +66,8 @@ class ShowMovieTableViewController: UITableViewController {
                     let operation = ImageOperation(url: imageURL, indexPath: indexPath, tableView: tableView)
                     self.queue.addOperation(operation)
                 }
+            }else{
+                cell0.backGropImageView.image = UIImage(named: "XXX.png")
             }
             return cell0
         case 1:
@@ -85,7 +86,10 @@ class ShowMovieTableViewController: UITableViewController {
                     let operation = ImageOperation(url: imageURL, indexPath: indexPath, tableView: tableView)
                     self.queue.addOperation(operation)
                 }
+            }else {
+                cell1.posterImageView.image = UIImage(named: "XXX.png")
             }
+            
             return cell1
         case 2:
             if let overView = currentMovie.overview {
@@ -93,35 +97,18 @@ class ShowMovieTableViewController: UITableViewController {
             }
             return cell2
         default :
-            var movieVideo = [MovieVideo]()
-            guard let url = URL(string: "https://api.themoviedb.org/3/movie/\(currentMovie.id ?? 0)/videos?api_key=39ba2275337b048cb87893b4520b0c94&language=eu-US") else {return cell3}
-            
-            let request = URLRequest(url: url)
-            let session = URLSession.shared.dataTask(with: request) { data, response, error in
-                let jsonDecoder = JSONDecoder()
-                if let data = data ,let results = try? jsonDecoder.decode(Result.self, from: data),
-                   let ok = results.resultKey, !ok.isEmpty {
-                    movieVideo = ok
-                    if let key = movieVideo[0].key, let site = movieVideo[0].site {
-                        if site == "YouTube" {
-                            let youtubeURL = URL(string: "https://www.youtube.com/watch?v=\(key)")
-                            // UIApplication.shared.open(youtubeURL!, options: [:])
-                            
-                            DispatchQueue.main.async {
-                                cell3.videoBtnOutlet.setTitle("\(youtubeURL!)", for: .normal)
-                                cell3.label.text = "預告片"
-                            }
-                        }
-                    }
-                }
-            }
-            session.resume()
-            
-           
+        
+            cell3.videoLabel.text = "觀看預告片"
             return cell3
+        } // switch
+    }// func
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueVideo" {
+            if let videoVC = segue.destination as? VideoViewController{
+                videoVC.showVideo(currentMovie: currentMovie)
+            }
         }
     }
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

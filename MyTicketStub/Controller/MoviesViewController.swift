@@ -72,9 +72,9 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         var url : URL?
         
         let region = "&region=TW"
-        switch indexPath?.row {
-        case 0: // 最新的電影
-            url = URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=39ba2275337b048cb87893b4520b0c94&language=zh-TW\(region)&sort_by=release_date.desc&include_adult=false&include_video=false&page=\(page)&with_watch_monetization_types=flatrate")
+        switch indexPath?.section {
+        case 0: // 即將上映電影
+            url = URL(string: "https://api.themoviedb.org/3/movie/upcoming?api_key=39ba2275337b048cb87893b4520b0c94&language=zh-TW&page=\(pages)\(region)")
         case 1: // 現正上映中
             url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=39ba2275337b048cb87893b4520b0c94&language=zh-TW&page=\(pages)\(region)")
         case 2: // 最受歡迎電影
@@ -163,6 +163,8 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //                }
 //                session.resume()
             }
+        }else{
+            cell.movieImageView.image = UIImage(named: "XXX.png")
         }
         return cell
     }

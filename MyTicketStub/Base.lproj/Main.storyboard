@@ -3,7 +3,6 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -205,6 +204,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
+                                        <color key="backgroundColor" systemColor="systemTealColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="335" id="7Df-WU-cUw"/>
                                             <constraint firstItem="bTc-jZ-b8F" firstAttribute="leading" secondItem="PQJ-Bj-5Fh" secondAttribute="leading" constant="11" id="Bjn-in-UOG"/>
@@ -249,7 +249,6 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="PQJ-Bj-5Fh" firstAttribute="top" secondItem="iv8-hq-Omy" secondAttribute="top" constant="20" id="4vX-VO-4oC"/>
                                     <constraint firstItem="gmN-VO-pDU" firstAttribute="leading" secondItem="PQJ-Bj-5Fh" secondAttribute="leading" constant="-20" id="8sV-yt-MMw"/>
@@ -409,6 +408,41 @@
             </objects>
             <point key="canvasLocation" x="2612" y="-162.3688155922039"/>
         </scene>
+        <!--Video View Controller-->
+        <scene sceneID="AG8-5q-y2e">
+            <objects>
+                <viewController id="ggL-y7-ffP" customClass="VideoViewController" customModule="MyTicketStub" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Id0-4Z-nw2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Scv-2l-Dfb">
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="umL-P6-1U3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Scv-2l-Dfb" firstAttribute="top" secondItem="umL-P6-1U3" secondAttribute="top" id="AqY-qt-2Ug"/>
+                            <constraint firstItem="Scv-2l-Dfb" firstAttribute="leading" secondItem="umL-P6-1U3" secondAttribute="leading" id="Uiu-32-E8Z"/>
+                            <constraint firstItem="umL-P6-1U3" firstAttribute="bottom" secondItem="Scv-2l-Dfb" secondAttribute="bottom" id="ZY6-ct-DG3"/>
+                            <constraint firstItem="umL-P6-1U3" firstAttribute="trailing" secondItem="Scv-2l-Dfb" secondAttribute="trailing" id="sEu-Qe-Khf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="UjX-ql-wB2"/>
+                    <connections>
+                        <outlet property="webView" destination="Scv-2l-Dfb" id="BCa-sr-khg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gBz-Ba-3Po" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2943" y="545"/>
+        </scene>
         <!--詳細資訊-->
         <scene sceneID="6BK-3g-Vaa">
             <objects>
@@ -557,36 +591,33 @@
                                     <outlet property="overViewLabel" destination="wo2-ZQ-fSI" id="XKD-6L-46Q"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell3" rowHeight="88" id="Umf-kD-yhR" customClass="ShowMovieTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell3" rowHeight="88" id="Umf-kD-yhR" customClass="ShowMovieTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="539.5" width="375" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Umf-kD-yhR" id="YP4-Az-Psa">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="349.5" height="88"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PFu-2g-JCt">
-                                            <rect key="frame" x="154" y="0.0" width="205" height="57"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <state key="normal">
-                                                <color key="titleColor" name="AccentColor"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="openURLPressed:" destination="Umf-kD-yhR" eventType="touchUpInside" id="S4f-B3-oW8"/>
-                                            </connections>
-                                        </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="預告片" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OA-AP-603">
-                                            <rect key="frame" x="16" y="0.0" width="130" height="54"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="觀看預告片" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttr-zL-8r2">
+                                            <rect key="frame" x="16" y="11" width="325.5" height="66"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="Vgf-VG-aga"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ttr-zL-8r2" firstAttribute="top" secondItem="YP4-Az-Psa" secondAttribute="topMargin" id="OSi-T8-FRr"/>
+                                        <constraint firstItem="ttr-zL-8r2" firstAttribute="leading" secondItem="YP4-Az-Psa" secondAttribute="leadingMargin" id="aRm-SQ-iWo"/>
+                                        <constraint firstItem="ttr-zL-8r2" firstAttribute="bottom" secondItem="YP4-Az-Psa" secondAttribute="bottomMargin" id="dSZ-c8-NeG"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ttr-zL-8r2" secondAttribute="trailing" id="gUv-BJ-huO"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="label" destination="1OA-AP-603" id="5an-xD-8hI"/>
-                                    <outlet property="videoBtnOutlet" destination="PFu-2g-JCt" id="Rve-qq-z9B"/>
+                                    <outlet property="videoLabel" destination="ttr-zL-8r2" id="OVr-Jd-dvb"/>
+                                    <segue destination="ggL-y7-ffP" kind="show" identifier="segueVideo" id="ZVq-kX-92W"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -620,29 +651,28 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k69-6Z-GgK">
                                 <rect key="frame" x="0.0" y="44" width="375" height="574"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="moviesCell" rowHeight="175" id="LSF-BR-IJ6" customClass="MoviesTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="moviesCell" rowHeight="175" id="LSF-BR-IJ6" customClass="MoviesTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="375" height="175"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LSF-BR-IJ6" id="B2Z-3N-Jdp">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349.5" height="175"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gdU-l6-uOn">
-                                                    <rect key="frame" x="10" y="10" width="115" height="155"/>
+                                                    <rect key="frame" x="10" y="10" width="97.5" height="155"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="115" id="uAc-1s-shh"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dm0-5t-0Fd">
-                                                    <rect key="frame" x="133" y="36.5" width="184" height="81"/>
+                                                    <rect key="frame" x="115.5" y="36.5" width="184" height="81"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8.7" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7s-ox-axK">
-                                                    <rect key="frame" x="230" y="10" width="45.5" height="20"/>
+                                                    <rect key="frame" x="212.5" y="10" width="45.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45.5" id="HGs-En-Thi"/>
                                                     </constraints>
@@ -651,7 +681,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我我我我我我我我我我我我我我我我我我我我我我我我" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMb-ev-h0A">
-                                                    <rect key="frame" x="133" y="124.5" width="200" height="40.5"/>
+                                                    <rect key="frame" x="115.5" y="124.5" width="192" height="40.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40.666666666666686" id="cy2-gs-EqW"/>
                                                     </constraints>
@@ -660,7 +690,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeV-xk-m5a">
-                                                    <rect key="frame" x="276" y="11" width="34" height="16"/>
+                                                    <rect key="frame" x="258.5" y="11" width="34" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="14l-Kx-ojB"/>
                                                         <constraint firstAttribute="width" constant="34" id="inm-WB-pdA"/>
@@ -749,7 +779,6 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="F75-HY-LyY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="175" id="JMI-c6-Z3A" customClass="MoviesTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.5" width="375" height="175"/>
@@ -873,7 +902,6 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MRZ-i7-eoh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" rowHeight="135" id="u7d-NY-J6K" customClass="MenuTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.5" width="375" height="135"/>
@@ -992,17 +1020,14 @@
         <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="trash" catalog="system" width="121" height="128"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

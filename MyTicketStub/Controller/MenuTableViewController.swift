@@ -11,13 +11,13 @@ class MenuTableViewController: UITableViewController {
     
   //  var menuData = [MoviesData]()
 
-    let moviesCellTitle = ["最新的電影", "現正放映", "最受歡迎電影", "最受好評電影"]
+    let moviesCellTitle = ["即將上映", "現正放映", "熱門電影", "好評電影"]
     let images : [UIImage] = [UIImage(named: "NEW.jpg")!, UIImage(named: "movie.png")!, UIImage(named: "Hot.png")!, UIImage(named: "star.png")!]
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rowHeight = tableView.frame.height/5 + 10
-
+        tableView.rowHeight = tableView.frame.height/5 - 25
+     
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -51,16 +51,27 @@ class MenuTableViewController: UITableViewController {
 //        }
 //        return 0
 //    }
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        
+        return headerView
+    }
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 25
+    }
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return self.moviesCellTitle.count
+        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
      
-        return self.moviesCellTitle.count
-        
+        return 1
     }
 
   
@@ -70,9 +81,15 @@ class MenuTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! MenuTableViewCell
         
-        cell.menuImageView.image = self.images[indexPath.row]
-        cell.menuLabel.text = moviesCellTitle[indexPath.row]
-        
+        cell.menuImageView.image = self.images[indexPath.section]
+        cell.menuLabel.text = moviesCellTitle[indexPath.section]
+        cell.backgroundColor = UIColor.white
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderWidth = 1
+        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
+        cell.layer.shadowOpacity = 0.5
+//        cell.layer.cornerRadius = 8
+        cell.clipsToBounds = false
         return cell
         
     }
