@@ -37,9 +37,13 @@ class VideoViewController: UIViewController {
                         }
                     }
                 }
-            }
-            if let error = error {
-                print("沒有預告片\(error)")
+            }else{
+                let alert = UIAlertController(title: "未提供資訊", message: "", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "確定", style: .cancel, handler: { action in
+                    self.navigationController?.popViewController(animated: true)
+                } ))
+                self.present(alert, animated: true, completion: nil)
+              
             }
         }
         session.resume()
