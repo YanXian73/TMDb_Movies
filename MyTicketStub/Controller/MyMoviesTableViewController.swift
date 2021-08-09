@@ -18,6 +18,7 @@ class MyMoviesTableViewController: UITableViewController, ShowMovieTableViewCont
         data.overview = movieData.overview
         data.release_date = movieData.release_date
         data.vote_average = movieData.vote_average!
+        data.id = movieData.id!
         CoreDataHelper.shared.saveContext()
 
     }
@@ -55,6 +56,15 @@ class MyMoviesTableViewController: UITableViewController, ShowMovieTableViewCont
             }catch{
                 print("error query db \(error)")
                 self.myMovieList = []
+            }
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "myShowMovie" {
+            if let myShowVC = segue.destination as? MyShowMovieViewController,
+               let index = tableView.indexPathForSelectedRow {
+                let movie = myMovieList[index.row]
+                myShowVC.currentMovie = movie
             }
         }
     }

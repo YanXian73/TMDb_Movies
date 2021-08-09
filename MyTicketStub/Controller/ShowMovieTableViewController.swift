@@ -47,7 +47,7 @@ class ShowMovieTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 5
     }
 
    
@@ -57,17 +57,20 @@ class ShowMovieTableViewController: UITableViewController {
         let cell1 = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! ShowMovieTableViewCell
         let cell2 = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ShowMovieTableViewCell
         let cell3 = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! ShowMovieTableViewCell
+        let cell4 = tableView.dequeueReusableCell(withIdentifier: "cell4", for: indexPath) as! ShowMovieTableViewCell
+
         
         switch indexPath.row {
         case 0:
-            if let imageKey = self.currentMovie.backdrop_path {
+            if let imageKey = self.currentMovie.poster_path {
                 if let imageURL = URL(string: "https://image.tmdb.org/t/p/w500" + imageKey) {
                     
                     let operation = ImageOperation(url: imageURL, indexPath: indexPath, tableView: tableView)
                     self.queue.addOperation(operation)
                 }
+                
             }else{
-                cell0.backGropImageView.image = UIImage(named: "XXX.png")
+                cell0.posterImageView.image = UIImage(named: "XXX.png")
             }
             return cell0
         case 1:
@@ -80,28 +83,42 @@ class ShowMovieTableViewController: UITableViewController {
             cell1.titleLabel.text = currentMovie.title
             cell1.releaseDateLabel.text = "上映日期：" + "\(currentMovie.release_date ?? "")"
             cell1.voteLabel.text = "\(currentMovie.vote_average ?? 0)"
-            if let imageKey = self.currentMovie.poster_path {
-                if let imageURL = URL(string: "https://image.tmdb.org/t/p/w500" + imageKey) {
-                    
-                    let operation = ImageOperation(url: imageURL, indexPath: indexPath, tableView: tableView)
-                    self.queue.addOperation(operation)
-                }
-            }else {
-                cell1.posterImageView.image = UIImage(named: "XXX.png")
-            }
+//            if let imageKey = self.currentMovie.poster_path {
+//                if let imageURL = URL(string: "https://image.tmdb.org/t/p/w500" + imageKey) {
+//
+//                    let operation = ImageOperation(url: imageURL, indexPath: indexPath, tableView: tableView)
+//                    self.queue.addOperation(operation)
+//                }
+//            }else {
+//                cell1.posterImageView.image = UIImage(named: "XXX.png")
+//            }
             
             return cell1
+            
         case 2:
             if let overView = currentMovie.overview {
                 cell2.overViewLabel.text = overView
             }
             return cell2
-        default :
+        case 3:
         
             cell3.videoLabel.text = "觀看預告片"
             return cell3
+            
+        default:
+            if let imageKey = self.currentMovie.backdrop_path {
+                if let imageURL = URL(string: "https://image.tmdb.org/t/p/w500" + imageKey) {
+                    
+                    let operation = ImageOperation(url: imageURL, indexPath: indexPath, tableView: tableView)
+                    self.queue.addOperation(operation)
+                }
+            }else{
+                cell0.backGropImageView.image = UIImage(named: "XXX.png")
+            }
+            return cell4
         } // switch
     }// func
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueVideo" {
             if let videoVC = segue.destination as? VideoViewController{

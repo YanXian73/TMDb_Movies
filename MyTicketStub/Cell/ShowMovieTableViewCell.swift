@@ -9,6 +9,8 @@ import UIKit
 
 class ShowMovieTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var remindLabel: UILabel!
+    @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var videoLabel: UILabel!
     @IBOutlet weak var originTitleLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
@@ -39,4 +41,22 @@ class ShowMovieTableViewCell: UITableViewCell {
 //        }
 //    }
     
+    @IBAction func remindBtnPressed(_ sender: Any) {
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Time coming"
+        content.subtitle = "Watch Movie"
+        content.body = "Movie! Movie! Movie!"
+        content.badge = 1
+        content.sound = UNNotificationSound.default
+        
+        let date = self.datePicker.date
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([ .year, .month, .day, .hour, .minute],
+            from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+        let request = UNNotificationRequest(identifier: "test", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        self.datePicker.date = date
+    }
 }

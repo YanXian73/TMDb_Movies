@@ -14,7 +14,7 @@ class VideoViewController: UIViewController {
     var currentMovie = MoviesData()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        webView.configuration.allowsInlineMediaPlayback = false
    
     }
     func showVideo(currentMovie: MoviesData) {

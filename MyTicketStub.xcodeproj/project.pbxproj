@@ -29,6 +29,7 @@
 		055051DF26B71164002CAA9B /* 青檸雷夢.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 055051DE26B71164002CAA9B /* 青檸雷夢.jpg */; };
 		0572335A26AF0EB4004B6C13 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0572335926AF0EB4004B6C13 /* MenuTableViewController.swift */; };
 		0572335C26AF0EFC004B6C13 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0572335B26AF0EFC004B6C13 /* MenuTableViewCell.swift */; };
+		0580125026C0F42E00394C0C /* MyShowMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580124F26C0F42E00394C0C /* MyShowMovieViewController.swift */; };
 		058B430B26B514F0005A3FA7 /* MyTicket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 058B430926B514F0005A3FA7 /* MyTicket.xcdatamodeld */; };
 		058B430D26B51E12005A3FA7 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058B430C26B51E12005A3FA7 /* CoreDataHelper.swift */; };
 		05A5E48F26B3A4D600CE02F6 /* ShowMovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A5E48E26B3A4D600CE02F6 /* ShowMovieTableViewController.swift */; };
@@ -70,6 +71,7 @@
 		055051DE26B71164002CAA9B /* 青檸雷夢.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "青檸雷夢.jpg"; sourceTree = "<group>"; };
 		0572335926AF0EB4004B6C13 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		0572335B26AF0EFC004B6C13 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		0580124F26C0F42E00394C0C /* MyShowMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShowMovieViewController.swift; sourceTree = "<group>"; };
 		058B430A26B514F0005A3FA7 /* MyTicket.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyTicket.xcdatamodel; sourceTree = "<group>"; };
 		058B430C26B51E12005A3FA7 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		05A5E48E26B3A4D600CE02F6 /* ShowMovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMovieTableViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				05BE20B626A95C5600B1A497 /* ScrollViewController.swift */,
 				052B6F6526B1418F00B1B4EE /* MyMoviesTableViewController.swift */,
 				0572335926AF0EB4004B6C13 /* MenuTableViewController.swift */,
+				0580124F26C0F42E00394C0C /* MyShowMovieViewController.swift */,
 				05A5E48E26B3A4D600CE02F6 /* ShowMovieTableViewController.swift */,
 				053FFC6626BED5E600BFAA7C /* VideoViewController.swift */,
 				052BC7BF26AC2FFD006AFCC8 /* MoviesViewController.swift */,
@@ -287,6 +290,7 @@
 				0572335C26AF0EFC004B6C13 /* MenuTableViewCell.swift in Sources */,
 				0572335A26AF0EB4004B6C13 /* MenuTableViewController.swift in Sources */,
 				058B430D26B51E12005A3FA7 /* CoreDataHelper.swift in Sources */,
+				0580125026C0F42E00394C0C /* MyShowMovieViewController.swift in Sources */,
 				0540C9FC26A7FC1A00BFF7EF /* TicketStub.swift in Sources */,
 				05B7F64526A8742000DA2850 /* MyCollectionViewCell.swift in Sources */,
 				05BE20B726A95C5600B1A497 /* ScrollViewController.swift in Sources */,

@@ -8,7 +8,7 @@ import CoreData
 import Foundation
 
 class MyMovieList : NSManagedObject{
-    @NSManaged var id : String
+    @NSManaged var uuid : String
     @NSManaged   var original_title : String?
     @NSManaged   var title : String?
     @NSManaged  var vote_average: Double
@@ -16,9 +16,11 @@ class MyMovieList : NSManagedObject{
     @NSManaged   var poster_path : String?
     @NSManaged   var overview : String?
     @NSManaged  var backdrop_path : String?
+    @NSManaged var id : NSInteger
     
     override func awakeFromInsert() {
-        self.id = UUID().uuidString
+        self.uuid = UUID().uuidString
+      
        // self.date = DateFormatter.localizedString(from: Date(), dateStyle: .long, timeStyle: .short) //時間樣式
     }
     //刪除前呼叫
