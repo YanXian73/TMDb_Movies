@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import CoreData
 
 class ShowMovieTableViewCell: UITableViewCell {
 
+    let moc = CoreDataHelper.shared.managedObjectContext()
+  
+    @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var remindLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var videoLabel: UILabel!
@@ -21,6 +25,8 @@ class ShowMovieTableViewCell: UITableViewCell {
     @IBOutlet weak var posterImageView: UIImageView!
     
     @IBOutlet weak var overViewLabel: UILabel!
+    
+    var isRemind = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,22 +47,45 @@ class ShowMovieTableViewCell: UITableViewCell {
 //        }
 //    }
     
-    @IBAction func remindBtnPressed(_ sender: Any) {
+    @IBAction func remindSwitch(_ sender: UISwitch) {
         
+        if sender.isOn {
+            createNotifiction()
+            datePicker.isHidden = true
+        }else{
+            removeNotifiction()
+            datePicker.isHidden = false
+        }
+        
+    }
+    
+    func createNotifiction() {
+        let remind = Remind(context: moc)
         let content = UNMutableNotificationContent()
-        content.title = "Time coming"
+        content.title = "\(self.titleLabel.text ?? "查無資訊")"
         content.subtitle = "Watch Movie"
         content.body = "Movie! Movie! Movie!"
-        content.badge = 1
+        content.badge =  1
         content.sound = UNNotificationSound.default
         
         let date = self.datePicker.date
         let calendar = Calendar.current
         let components = calendar.dateComponents([ .year, .month, .day, .hour, .minute],
-            from: date)
+                                                 from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
-        let request = UNNotificationRequest(identifier: "test", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "\(self.titleLabel.text ?? "")", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        self.datePicker.date = date
+        let formatterDate = DateFormatter.localizedString(from: date, dateStyle: .long, timeStyle: .short)
+        self.remindLabel.text = "通知日期：\(formatterDate)"
+        remind.movieName = self.titleLabel.text
+        remind.remind = self.remindLabel.text
+        CoreDataHelper.shared.saveContext()
+   
+    }
+    func removeNotifiction(){
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["\(self.titleLabel.text ?? "")"])
+        self.remindLabel.text = "設定通知："
+        
+        
     }
 }

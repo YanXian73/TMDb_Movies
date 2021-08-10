@@ -55,10 +55,10 @@ class MenuTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
+
         let headerView = UIView()
-        headerView.backgroundColor = UIColor.clear
-        
+         headerView.backgroundColor = UIColor.clear
+
         return headerView
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

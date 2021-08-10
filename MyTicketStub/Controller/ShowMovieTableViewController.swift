@@ -39,6 +39,9 @@ class ShowMovieTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -97,7 +100,7 @@ class ShowMovieTableViewController: UITableViewController {
             
         case 2:
             if let overView = currentMovie.overview {
-                cell2.overViewLabel.text = overView
+                cell2.overViewLabel.text = "劇情介紹：\n\n    \(overView)"
             }
             return cell2
         case 3:

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		050075E926B27E6200E2A2C9 /* ImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050075E826B27E6200E2A2C9 /* ImageOperation.swift */; };
+		0524E77326C2465500DBB113 /* Remind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0524E77226C2465500DBB113 /* Remind.swift */; };
 		052B6F6626B1418F00B1B4EE /* MyMoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052B6F6526B1418F00B1B4EE /* MyMoviesTableViewController.swift */; };
 		052BC7C026AC2FFD006AFCC8 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BC7BF26AC2FFD006AFCC8 /* MoviesViewController.swift */; };
 		052BC7C226AC6045006AFCC8 /* MoviesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BC7C126AC6045006AFCC8 /* MoviesData.swift */; };
@@ -36,6 +37,7 @@
 		05A5E49126B3AE3B00CE02F6 /* ShowMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A5E49026B3AE3B00CE02F6 /* ShowMovieTableViewCell.swift */; };
 		05B7F64526A8742000DA2850 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B7F64426A8742000DA2850 /* MyCollectionViewCell.swift */; };
 		05BE20B726A95C5600B1A497 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BE20B626A95C5600B1A497 /* ScrollViewController.swift */; };
+		05DBDB1226C2707100CE889D /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DBDB1126C2707100CE889D /* SettingViewController.swift */; };
 		05DE947626BA325900E00E75 /* NEW.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05DE947526BA325900E00E75 /* NEW.jpg */; };
 		05DE947826BA413700E00E75 /* NewPlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 05DE947726BA413700E00E75 /* NewPlay.png */; };
 		05DE947A26BA44BD00E00E75 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 05DE947926BA44BD00E00E75 /* star.png */; };
@@ -48,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		050075E826B27E6200E2A2C9 /* ImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOperation.swift; sourceTree = "<group>"; };
+		0524E77226C2465500DBB113 /* Remind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remind.swift; sourceTree = "<group>"; };
 		052B6F6526B1418F00B1B4EE /* MyMoviesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMoviesTableViewController.swift; sourceTree = "<group>"; };
 		052BC7BF26AC2FFD006AFCC8 /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		052BC7C126AC6045006AFCC8 /* MoviesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesData.swift; sourceTree = "<group>"; };
@@ -78,6 +81,7 @@
 		05A5E49026B3AE3B00CE02F6 /* ShowMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMovieTableViewCell.swift; sourceTree = "<group>"; };
 		05B7F64426A8742000DA2850 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		05BE20B626A95C5600B1A497 /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
+		05DBDB1126C2707100CE889D /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		05DE947526BA325900E00E75 /* NEW.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = NEW.jpg; sourceTree = "<group>"; };
 		05DE947726BA413700E00E75 /* NewPlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewPlay.png; sourceTree = "<group>"; };
 		05DE947926BA44BD00E00E75 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 				052BC7C126AC6045006AFCC8 /* MoviesData.swift */,
 				058B430926B514F0005A3FA7 /* MyTicket.xcdatamodeld */,
 				05F7360E26BB02B40097FA30 /* MyMovieList.swift */,
+				0524E77226C2465500DBB113 /* Remind.swift */,
 				058B430C26B51E12005A3FA7 /* CoreDataHelper.swift */,
 			);
 			path = Model;
@@ -117,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				0540C9E926A7EB9B00BFF7EF /* FirstViewController.swift */,
+				05DBDB1126C2707100CE889D /* SettingViewController.swift */,
 				05BE20B626A95C5600B1A497 /* ScrollViewController.swift */,
 				052B6F6526B1418F00B1B4EE /* MyMoviesTableViewController.swift */,
 				0572335926AF0EB4004B6C13 /* MenuTableViewController.swift */,
@@ -297,9 +303,11 @@
 				053750E626AD5AA800E271BA /* MoviesTableViewCell.swift in Sources */,
 				05A5E48F26B3A4D600CE02F6 /* ShowMovieTableViewController.swift in Sources */,
 				050075E926B27E6200E2A2C9 /* ImageOperation.swift in Sources */,
+				0524E77326C2465500DBB113 /* Remind.swift in Sources */,
 				052BC7C026AC2FFD006AFCC8 /* MoviesViewController.swift in Sources */,
 				05E36DE626AA8B3B00F9E693 /* MapViewController.swift in Sources */,
 				05F7360F26BB02B40097FA30 /* MyMovieList.swift in Sources */,
+				05DBDB1226C2707100CE889D /* SettingViewController.swift in Sources */,
 				058B430B26B514F0005A3FA7 /* MyTicket.xcdatamodeld in Sources */,
 				0540C9E626A7EB9B00BFF7EF /* AppDelegate.swift in Sources */,
 				053FFC6726BED5E600BFAA7C /* VideoViewController.swift in Sources */,

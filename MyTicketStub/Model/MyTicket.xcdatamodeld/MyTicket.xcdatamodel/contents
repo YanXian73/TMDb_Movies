@@ -11,6 +11,10 @@
         <attribute name="uuid" attributeType="String"/>
         <attribute name="vote_average" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
+    <entity name="Remind" representedClassName=".Remind" syncable="YES">
+        <attribute name="movieName" optional="YES" attributeType="String"/>
+        <attribute name="remind" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="TicketStub" representedClassName=".TicketStub" syncable="YES">
         <attribute name="contentText" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="String"/>
@@ -20,6 +24,7 @@
     </entity>
     <elements>
         <element name="MyMovieList" positionX="0" positionY="36" width="128" height="164"/>
+        <element name="Remind" positionX="0" positionY="90" width="128" height="59"/>
         <element name="TicketStub" positionX="0" positionY="0" width="128" height="104"/>
     </elements>
 </model>
