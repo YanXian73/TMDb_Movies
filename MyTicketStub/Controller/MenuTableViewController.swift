@@ -32,6 +32,7 @@ class MenuTableViewController: UITableViewController {
            let index = tableView.indexPathForSelectedRow {
             movieVC.indexPath = index
             movieVC.getMoviesInfo(pages: movieVC.page)
+            movieVC.navigationItem.title = moviesCellTitle[index.section]
         }
     }
 

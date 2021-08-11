@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_TW</string>
 	<key>CFBundleDisplayName</key>
-	<string>搜電影</string>
+	<string>TMDb Movies</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -22,14 +22,6 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>取得相機，供app使用</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>取得位置，供app使用</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>取得位置，供app使用</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>取得位置，供app使用</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

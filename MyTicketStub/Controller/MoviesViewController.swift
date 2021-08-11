@@ -35,7 +35,6 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
         tableView.delegate = self
         
-      
         
         
         /*
@@ -65,6 +64,10 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
          }
          */
        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
 
     

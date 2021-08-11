@@ -28,6 +28,10 @@
 		0540C9F226A7EB9C00BFF7EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0540C9F026A7EB9C00BFF7EF /* LaunchScreen.storyboard */; };
 		0540C9FC26A7FC1A00BFF7EF /* TicketStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0540C9FB26A7FC1A00BFF7EF /* TicketStub.swift */; };
 		055051DF26B71164002CAA9B /* 青檸雷夢.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 055051DE26B71164002CAA9B /* 青檸雷夢.jpg */; };
+		055D60DE26C3A11E00494776 /* Green Tree Icon Landscaping Logo (2).png in Resources */ = {isa = PBXBuildFile; fileRef = 055D60DD26C3A11E00494776 /* Green Tree Icon Landscaping Logo (2).png */; };
+		055D60E026C3A48F00494776 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 055D60DF26C3A48F00494776 /* 1.png */; };
+		055D60E226C3A49700494776 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 055D60E126C3A49600494776 /* 2.png */; };
+		055D60E426C3CF9900494776 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D60E326C3CF9900494776 /* SettingTableViewCell.swift */; };
 		0572335A26AF0EB4004B6C13 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0572335926AF0EB4004B6C13 /* MenuTableViewController.swift */; };
 		0572335C26AF0EFC004B6C13 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0572335B26AF0EFC004B6C13 /* MenuTableViewCell.swift */; };
 		0580125026C0F42E00394C0C /* MyShowMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580124F26C0F42E00394C0C /* MyShowMovieViewController.swift */; };
@@ -37,13 +41,14 @@
 		05A5E49126B3AE3B00CE02F6 /* ShowMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A5E49026B3AE3B00CE02F6 /* ShowMovieTableViewCell.swift */; };
 		05B7F64526A8742000DA2850 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B7F64426A8742000DA2850 /* MyCollectionViewCell.swift */; };
 		05BE20B726A95C5600B1A497 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BE20B626A95C5600B1A497 /* ScrollViewController.swift */; };
+		05C5B3ED26C4176A006A2521 /* iTunesArtwork@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C5B3EC26C4176A006A2521 /* iTunesArtwork@1x.png */; };
+		05C5B3EF26C41798006A2521 /* iTunesArt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C5B3EE26C41798006A2521 /* iTunesArt@2x.png */; };
 		05DBDB1226C2707100CE889D /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DBDB1126C2707100CE889D /* SettingViewController.swift */; };
 		05DE947626BA325900E00E75 /* NEW.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05DE947526BA325900E00E75 /* NEW.jpg */; };
 		05DE947826BA413700E00E75 /* NewPlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 05DE947726BA413700E00E75 /* NewPlay.png */; };
 		05DE947A26BA44BD00E00E75 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 05DE947926BA44BD00E00E75 /* star.png */; };
 		05DE947E26BA47C200E00E75 /* Hot.png in Resources */ = {isa = PBXBuildFile; fileRef = 05DE947D26BA47C200E00E75 /* Hot.png */; };
 		05E36DE626AA8B3B00F9E693 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E36DE526AA8B3B00F9E693 /* MapViewController.swift */; };
-		05E36DE926AA938400F9E693 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E36DE826AA938400F9E693 /* MapKit.framework */; };
 		05E36DEB26AA938C00F9E693 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E36DEA26AA938C00F9E693 /* CoreLocation.framework */; };
 		05F7360F26BB02B40097FA30 /* MyMovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7360E26BB02B40097FA30 /* MyMovieList.swift */; };
 /* End PBXBuildFile section */
@@ -72,6 +77,10 @@
 		0540C9F326A7EB9C00BFF7EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0540C9FB26A7FC1A00BFF7EF /* TicketStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketStub.swift; sourceTree = "<group>"; };
 		055051DE26B71164002CAA9B /* 青檸雷夢.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "青檸雷夢.jpg"; sourceTree = "<group>"; };
+		055D60DD26C3A11E00494776 /* Green Tree Icon Landscaping Logo (2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green Tree Icon Landscaping Logo (2).png"; sourceTree = "<group>"; };
+		055D60DF26C3A48F00494776 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		055D60E126C3A49600494776 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		055D60E326C3CF9900494776 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		0572335926AF0EB4004B6C13 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		0572335B26AF0EFC004B6C13 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		0580124F26C0F42E00394C0C /* MyShowMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShowMovieViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +90,8 @@
 		05A5E49026B3AE3B00CE02F6 /* ShowMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMovieTableViewCell.swift; sourceTree = "<group>"; };
 		05B7F64426A8742000DA2850 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		05BE20B626A95C5600B1A497 /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
+		05C5B3EC26C4176A006A2521 /* iTunesArtwork@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@1x.png"; sourceTree = "<group>"; };
+		05C5B3EE26C41798006A2521 /* iTunesArt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArt@2x.png"; sourceTree = "<group>"; };
 		05DBDB1126C2707100CE889D /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		05DE947526BA325900E00E75 /* NEW.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = NEW.jpg; sourceTree = "<group>"; };
 		05DE947726BA413700E00E75 /* NewPlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewPlay.png; sourceTree = "<group>"; };
@@ -98,7 +109,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				05E36DEB26AA938C00F9E693 /* CoreLocation.framework in Frameworks */,
-				05E36DE926AA938400F9E693 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +152,7 @@
 				0572335B26AF0EFC004B6C13 /* MenuTableViewCell.swift */,
 				05A5E49026B3AE3B00CE02F6 /* ShowMovieTableViewCell.swift */,
 				053750E526AD5AA800E271BA /* MoviesTableViewCell.swift */,
+				055D60E326C3CF9900494776 /* SettingTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -149,6 +160,11 @@
 		053FFC5D26BEB21900BFAA7C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				05C5B3EC26C4176A006A2521 /* iTunesArtwork@1x.png */,
+				05C5B3EE26C41798006A2521 /* iTunesArt@2x.png */,
+				055D60DF26C3A48F00494776 /* 1.png */,
+				055D60E126C3A49600494776 /* 2.png */,
+				055D60DD26C3A11E00494776 /* Green Tree Icon Landscaping Logo (2).png */,
 				053FFC6426BEB4D200BFAA7C /* XXX.png */,
 				05DE947D26BA47C200E00E75 /* Hot.png */,
 				053FFC5F26BEB31F00BFAA7C /* Hot.black.png */,
@@ -267,13 +283,18 @@
 			files = (
 				0540C9F226A7EB9C00BFF7EF /* LaunchScreen.storyboard in Resources */,
 				0540C9EF26A7EB9C00BFF7EF /* Assets.xcassets in Resources */,
+				055D60E226C3A49700494776 /* 2.png in Resources */,
+				055D60DE26C3A11E00494776 /* Green Tree Icon Landscaping Logo (2).png in Resources */,
+				05C5B3ED26C4176A006A2521 /* iTunesArtwork@1x.png in Resources */,
 				055051DF26B71164002CAA9B /* 青檸雷夢.jpg in Resources */,
 				0540C9ED26A7EB9B00BFF7EF /* Main.storyboard in Resources */,
 				05DE947A26BA44BD00E00E75 /* star.png in Resources */,
 				053FFC6326BEB31F00BFAA7C /* star (1).png in Resources */,
 				053FFC6126BEB31F00BFAA7C /* images.black.png in Resources */,
 				05DE947E26BA47C200E00E75 /* Hot.png in Resources */,
+				055D60E026C3A48F00494776 /* 1.png in Resources */,
 				052EB5B126BBFCAC0063DF34 /* movie.png in Resources */,
+				05C5B3EF26C41798006A2521 /* iTunesArt@2x.png in Resources */,
 				05DE947826BA413700E00E75 /* NewPlay.png in Resources */,
 				053FFC6526BEB4D200BFAA7C /* XXX.png in Resources */,
 				05DE947626BA325900E00E75 /* NEW.jpg in Resources */,
@@ -295,6 +316,7 @@
 				05A5E49126B3AE3B00CE02F6 /* ShowMovieTableViewCell.swift in Sources */,
 				0572335C26AF0EFC004B6C13 /* MenuTableViewCell.swift in Sources */,
 				0572335A26AF0EB4004B6C13 /* MenuTableViewController.swift in Sources */,
+				055D60E426C3CF9900494776 /* SettingTableViewCell.swift in Sources */,
 				058B430D26B51E12005A3FA7 /* CoreDataHelper.swift in Sources */,
 				0580125026C0F42E00394C0C /* MyShowMovieViewController.swift in Sources */,
 				0540C9FC26A7FC1A00BFF7EF /* TicketStub.swift in Sources */,

@@ -105,7 +105,7 @@ class ShowMovieTableViewController: UITableViewController {
             return cell2
         case 3:
         
-            cell3.videoLabel.text = "觀看預告片"
+            cell3.videoLabel.text = "YouTube預告片"
             return cell3
             
         default:
