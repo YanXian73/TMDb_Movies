@@ -9,7 +9,7 @@ import UIKit
 
 class SettingTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var urlBtnOutlet: UIButton!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,10 +21,5 @@ class SettingTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    @IBAction func urlBtnPressed(_ sender: Any) {
-        if let url = URL(string: "https://www.themoviedb.org/?language=zh-TW") {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
-        
-    }
+ 
 }

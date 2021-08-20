@@ -22,6 +22,8 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var page : Int = 1
     var totalPages: Int!
     var queue = OperationQueue()
+    var dates : Dates?
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
@@ -98,21 +100,21 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             
             if let data = data, let item = try? decoder.decode(Item.self, from: data) {
+              //  self.dates = item.dates
                 self.movieData += item.results
                 self.page = item.page + 1
                 self.totalPages = item.total_pages
-                
-//                if self.page <= self.totalPages {
-//                    self.getMoviesInfo(pages: self.page)
-//                }
                 DispatchQueue.main.async { //下載完成之後要重新更新畫面
-                    //       if self.movieData.count < 50 {
                     self.tableView.reloadData()
                     self.pageStatus = .NotLoadingMore
-                    //     }
-                    
                 }
-                
+            }
+            if let data = data, let item = try? decoder.decode(Dates.self, from: data) {
+                self.dates = item
+                DispatchQueue.main.async { //下載完成之後要重新更新畫面
+                    self.tableView.reloadData()
+                    self.pageStatus = .NotLoadingMore
+                }
             }
         }
         session.resume()
@@ -136,16 +138,30 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
     }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        if self.indexPath?.section == 0 || self.indexPath?.section == 1 {
+            if  let date = self.dates {
+                return "搜尋日期： \(date.dates["minimum"] ?? "")  ~  \(date.dates["maximum"] ?? "")"
+            }
+        }
+        return ""
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        
+        if self.indexPath?.section == 0 || self.indexPath?.section == 1 {
+            let item = self.movieData.filter { data in
+                return data.release_date?.contains("2021") == true
+            }
+            return item.count
+        }
         return self.movieData.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+     
         let cell = tableView.dequeueReusableCell(withIdentifier: "moviesCell", for: indexPath) as! MoviesTableViewCell
-       
+     //   cell.popularLabel.text = "人氣:\(self.movieData[indexPath.row].popularity ?? 0)"
         cell.titleLabel.text = self.movieData[indexPath.row].title
         cell.releaseDateLabel.text = "上映日期：\(self.movieData[indexPath.row].release_date ?? "")"
         cell.voteLabel.text = "\(self.movieData[indexPath.row].vote_average ?? 0.0)"
@@ -157,18 +173,11 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let operation = ImageOperation(url: imageURL, indexPath: indexPath, tableView: tableView)
                 self.queue.addOperation(operation)
                 
-//                let session = URLSession.shared.dataTask(with: request) { data, responds, error in
-//                    if let data = data {
-//                        DispatchQueue.main.async {
-//                            cell.movieImageView.image = UIImage(data: data)
-//                        }
-//                    }
-//                }
-//                session.resume()
             }
         }else{
             cell.movieImageView.image = UIImage(named: "XXX.png")
         }
+        
         return cell
     }
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {

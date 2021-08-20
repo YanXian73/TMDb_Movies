@@ -8,16 +8,18 @@
 import UIKit
 import CoreData
 protocol ShowMovieTableViewControllerDelegate: AnyObject {
-    func didAddRow(movieData:MoviesData)
+    func addFavoriteRow(movieData:MoviesData)
+    func removeFavoriteRow(movieeData:MoviesData)
 }
 
 class ShowMovieTableViewController: UITableViewController {
     
- 
+    var isFavorite = false
     @IBOutlet weak var myFavoriteOutlet: UIBarButtonItem!
     weak var delegate : ShowMovieTableViewControllerDelegate?
     let queue = OperationQueue()
     var currentMovie =  MoviesData()
+    var myMovieList : [MyMovieList]!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,13 +29,48 @@ class ShowMovieTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        queryFromDB()
+        
+        for i in myMovieList {
+            if i.id == currentMovie.id {
+                self.myFavoriteOutlet.image = UIImage(systemName: "star.fill")
+                self.isFavorite = true
+            }
+        }
+    }
+    //MARK: Core Data
+    func queryFromDB()  {
+        let moc = CoreDataHelper.shared.managedObjectContext()
+        let request = NSFetchRequest<MyMovieList>(entityName: "MyMovieList")
+        moc.performAndWait {
+            do{
+                let result = try moc.fetch(request)
+                self.myMovieList = result
+            }catch{
+                print("error query db \(error)")
+                self.myMovieList = []
+                
+            }
+        }
+    }
     
     @IBAction func addMyFavorite(_ sender: Any) {
-        if let myMovieTVC = storyboard?.instantiateViewController(withIdentifier: "myMovie") as? MyMoviesTableViewController {
+        
+        guard let myMovieTVC = storyboard?.instantiateViewController(withIdentifier: "myMovie") as? MyMoviesTableViewController else { return }
+        self.delegate = myMovieTVC
+        myMovieTVC.queryFromDB()
+        if !self.isFavorite {
             self.myFavoriteOutlet.image = UIImage(systemName: "star.fill")
-            self.delegate = myMovieTVC
+            self.delegate?.addFavoriteRow(movieData: currentMovie)
+            self.isFavorite = true
+        }else {
             
-            self.delegate?.didAddRow(movieData: currentMovie)
+            self.delegate?.removeFavoriteRow(movieeData: currentMovie)
+            self.myFavoriteOutlet.image = UIImage(systemName: "star")
+            self.isFavorite = false
+            
         }
         
     }

@@ -4,30 +4,29 @@
 //
 //  Created by 吳彥賢 on 2021/8/10.
 //
-
+import MessageUI
 import UIKit
 import CoreData
 
-class SettingViewController: UIViewController {
+class SettingViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     var remind: [Remind]!
-    
+    var text = ["在App Store給我們評分", "寫信給開發者", "TMAD官網"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
         label.text = ""
         tableView.dataSource = self
         tableView.delegate = self
-  //      self.navigationItem.leftBarButtonItem = editButtonItem
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        queryFromDB()
         tableView.reloadData()
     }
 //    override func setEditing(_ editing: Bool, animated: Bool) {
@@ -50,6 +49,66 @@ class SettingViewController: UIViewController {
                 self.remind = []
             }
         }
+    }
+    func askForRating() {
+        let askController = UIAlertController(title: "評分", message: "如果您喜歡這個App，請幫我們在App Store評分，謝謝您！", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "我要評分", style: .default) { action in
+            let appID = "12345"
+            let appURL = URL(string: "https://itunes.apple.com/us/app/itunes-u/id\(appID)?action=write-review")!
+            UIApplication.shared.open(appURL, options: [:]) { success in
+            }
+        }
+        askController.addAction(okAction)
+        let laterAction = UIAlertAction(title: "稍後在評", style: .default, handler: nil)
+        askController.addAction(laterAction)
+        self.present(askController, animated: true, completion: nil)
+    }
+    func urlFromTMDB() {
+           if let url = URL(string: "https://www.themoviedb.org/?language=zh-TW") {
+               UIApplication.shared.open(url, options: [:], completionHandler: nil)
+           }
+           
+       }
+    func supportEmail() {
+        if (MFMailComposeViewController.canSendMail()) {
+            let alert = UIAlertController(title: "", message: "請回給我們建議，讓我們變得更好！", preferredStyle: .alert)
+           
+            let email = UIAlertAction(title: "email", style: .default) { action in
+                let mailController = MFMailComposeViewController()
+                mailController.mailComposeDelegate = self
+                mailController.title = "mail"
+                mailController.setSubject("給App建議")
+                let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
+                let product = Bundle.main.object(forInfoDictionaryKey: "CFBundleName")
+                let messageBody = "<br/><br/><br/>Product:\(product!)(\(version!))"
+                mailController.setMessageBody(messageBody, isHTML: true)
+                mailController.setToRecipients(["efrtyjukopp@gmail.com"])
+                self.present(mailController, animated: true, completion: nil)
+            }
+           
+            alert.addAction(email)
+            let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)
+            alert.addAction(cancel)
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            // alert user can't send email
+        }
+    }
+    //MARK:MFMailComposeViewControllerDelegate
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result {
+        case .cancelled:
+            print("user cancelled")
+        case .failed:
+            print("user failed")
+        case .saved:
+            print("user saved")
+        case .sent:
+            print("user send")
+        default:
+            print("")
+        }
+        self.dismiss(animated: true, completion: nil)
     }
 
     /*
@@ -74,10 +133,20 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             return "相關連結"
         }
     }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = UIView()
+//         headerView.backgroundColor = UIColor.clear
+//
+//        return headerView
+//    }
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        //        let header = view as! UITableViewHeaderFooterView
+        //        header.backgroundView?.backgroundColor = UIColor.clear
+        //        header.textLabel?.font = UIFont(name: "通知", size: 50)
+        //  header.textLabel?.textColor = UIColor.blue
+        view.tintColor = UIColor.clear
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.font = UIFont(name: "通知", size: 30)
-      //  header.textLabel?.textColor = UIColor.blue
+        header.textLabel?.textColor = UIColor.black
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -95,29 +164,26 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        switch section  {
-        case 5: //先不用
-            return self.remind.count
-        default:
-            return 1
-        }
+
+        return self.text.count
+        
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 5: //先不用
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        
+        cell.textLabel?.text = self.text[indexPath.row]
+        switch indexPath.row {
+        case 0:
+            cell.imageView?.image = UIImage(systemName: "star.circle")
             
-            cell.textLabel?.text = self.remind[indexPath.row].movieName
-            cell.detailTextLabel?.text = self.remind[indexPath.row].remind
-            cell.imageView?.image = UIImage(systemName: "")
-            return cell
-            
-        default: //都只先顯示這個cell
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! SettingTableViewCell
-            cell.urlBtnOutlet.setTitle("TMDB官網", for: .normal)
-            return cell
+        case 1:
+            cell.imageView?.image = UIImage(systemName: "square.and.pencil")
+        default:
+            cell.imageView?.image = UIImage(systemName: "desktopcomputer")
         }
-   }
+        return cell
+    }
     
 //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 //        if editingStyle == .delete {
@@ -134,5 +200,13 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.row {
+        case 0:
+            self.askForRating()
+        case 1:
+            self.supportEmail()
+        default:
+            self.urlFromTMDB()
+        }
     }
 }

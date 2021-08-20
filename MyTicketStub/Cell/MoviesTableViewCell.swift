@@ -10,6 +10,8 @@ import UIKit
 class MoviesTableViewCell: UITableViewCell {
 
     
+ 
+    @IBOutlet weak var popularLabel: UILabel!
     @IBOutlet weak var starBtnOutlet: UIButton!
     @IBOutlet weak var voteLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!

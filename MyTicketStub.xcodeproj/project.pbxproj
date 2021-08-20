@@ -28,6 +28,7 @@
 		0540C9F226A7EB9C00BFF7EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0540C9F026A7EB9C00BFF7EF /* LaunchScreen.storyboard */; };
 		0540C9FC26A7FC1A00BFF7EF /* TicketStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0540C9FB26A7FC1A00BFF7EF /* TicketStub.swift */; };
 		055051DF26B71164002CAA9B /* 青檸雷夢.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 055051DE26B71164002CAA9B /* 青檸雷夢.jpg */; };
+		0557B1B626CF735900A6BBF0 /* NetStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0557B1B526CF735900A6BBF0 /* NetStatus.swift */; };
 		055D60DE26C3A11E00494776 /* Green Tree Icon Landscaping Logo (2).png in Resources */ = {isa = PBXBuildFile; fileRef = 055D60DD26C3A11E00494776 /* Green Tree Icon Landscaping Logo (2).png */; };
 		055D60E026C3A48F00494776 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 055D60DF26C3A48F00494776 /* 1.png */; };
 		055D60E226C3A49700494776 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 055D60E126C3A49600494776 /* 2.png */; };
@@ -77,6 +78,7 @@
 		0540C9F326A7EB9C00BFF7EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0540C9FB26A7FC1A00BFF7EF /* TicketStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketStub.swift; sourceTree = "<group>"; };
 		055051DE26B71164002CAA9B /* 青檸雷夢.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "青檸雷夢.jpg"; sourceTree = "<group>"; };
+		0557B1B526CF735900A6BBF0 /* NetStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetStatus.swift; sourceTree = "<group>"; };
 		055D60DD26C3A11E00494776 /* Green Tree Icon Landscaping Logo (2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green Tree Icon Landscaping Logo (2).png"; sourceTree = "<group>"; };
 		055D60DF26C3A48F00494776 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		055D60E126C3A49600494776 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				058B430926B514F0005A3FA7 /* MyTicket.xcdatamodeld */,
 				05F7360E26BB02B40097FA30 /* MyMovieList.swift */,
 				0524E77226C2465500DBB113 /* Remind.swift */,
+				0557B1B526CF735900A6BBF0 /* NetStatus.swift */,
 				058B430C26B51E12005A3FA7 /* CoreDataHelper.swift */,
 			);
 			path = Model;
@@ -313,6 +316,7 @@
 				052BC7C226AC6045006AFCC8 /* MoviesData.swift in Sources */,
 				0540C9EA26A7EB9B00BFF7EF /* FirstViewController.swift in Sources */,
 				052B6F6626B1418F00B1B4EE /* MyMoviesTableViewController.swift in Sources */,
+				0557B1B626CF735900A6BBF0 /* NetStatus.swift in Sources */,
 				05A5E49126B3AE3B00CE02F6 /* ShowMovieTableViewCell.swift in Sources */,
 				0572335C26AF0EFC004B6C13 /* MenuTableViewCell.swift in Sources */,
 				0572335A26AF0EB4004B6C13 /* MenuTableViewController.swift in Sources */,

@@ -8,7 +8,19 @@ import CoreData
 import UIKit
 
 class MyMoviesTableViewController: UITableViewController, ShowMovieTableViewControllerDelegate {
-    func didAddRow(movieData: MoviesData) {
+
+    func removeFavoriteRow(movieeData: MoviesData) {
+      let movie = self.myMovieList.filter { movie in
+            return movie.id == movieeData.id
+        }
+        let moc = CoreDataHelper.shared.managedObjectContext()
+        moc.performAndWait {
+            moc.delete(movie.first!)
+        }
+        CoreDataHelper.shared.saveContext()
+    }
+    
+    func addFavoriteRow(movieData: MoviesData) {
         let moc = CoreDataHelper.shared.managedObjectContext()
         let data = MyMovieList(context: moc)
         data.original_title = movieData.original_title
@@ -22,7 +34,9 @@ class MyMoviesTableViewController: UITableViewController, ShowMovieTableViewCont
         CoreDataHelper.shared.saveContext()
 
     }
-
+    
+    var label : UILabel?
+    var isEmptyImage = [UIImage]()
     var myMovieList : [MyMovieList]!
     var currentMovie = MoviesData()
     let queue = OperationQueue()
@@ -51,11 +65,12 @@ class MyMoviesTableViewController: UITableViewController, ShowMovieTableViewCont
         let request = NSFetchRequest<MyMovieList>(entityName: "MyMovieList")
         moc.performAndWait {
             do{
-            let result = try moc.fetch(request)
+                let result = try moc.fetch(request)
                 self.myMovieList = result
             }catch{
                 print("error query db \(error)")
                 self.myMovieList = []
+                
             }
         }
     }
@@ -68,6 +83,7 @@ class MyMoviesTableViewController: UITableViewController, ShowMovieTableViewCont
             }
         }
     }
+  
  
 
     // MARK: - Table view data source
@@ -82,13 +98,19 @@ class MyMoviesTableViewController: UITableViewController, ShowMovieTableViewCont
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if self.myMovieList.isEmpty {
+            self.tableView.setEmptyMessage("目前清單是空的，前往電影分類詳細資訊頁面->點擊右上角星星，新增／移除我的片單！")
+        }else{
+            self.tableView.restore()
+        }
         return self.myMovieList.count
     }
 
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MoviesTableViewCell
-
+        
         cell.titleLabel.text = self.myMovieList[indexPath.row].title
         cell.releaseDateLabel.text = "上映日期：\(self.myMovieList[indexPath.row].release_date ?? "")"
         cell.voteLabel.text = "\(self.myMovieList[indexPath.row].vote_average )"
@@ -99,10 +121,11 @@ class MyMoviesTableViewController: UITableViewController, ShowMovieTableViewCont
                 
                 let operation = ImageOperation(url: imageURL, indexPath: indexPath, tableView: tableView)
                 self.queue.addOperation(operation)
- 
+                
             }
         }
         return cell
+        
     }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -163,4 +186,24 @@ class MyMoviesTableViewController: UITableViewController, ShowMovieTableViewCont
     }
     */
 
+}
+extension UITableView {
+
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .black
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .center
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 35)
+        messageLabel.sizeToFit()
+
+        self.backgroundView = messageLabel
+        self.separatorStyle = .none
+    }
+
+    func restore() {
+        self.backgroundView = nil
+        self.separatorStyle = .singleLine
+    }
 }

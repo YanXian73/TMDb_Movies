@@ -92,9 +92,12 @@ class MenuTableViewController: UITableViewController {
         cell.layer.borderWidth = 1
         cell.layer.shadowOffset = CGSize(width: 0, height: 0)
         cell.layer.shadowOpacity = 0.5
-//        cell.layer.cornerRadius = 8
+        cell.layer.cornerRadius = 8
         cell.clipsToBounds = false
         return cell
+//        cell.imageView?.image = self.images[indexPath.section]
+//        cell.textLabel?.text = self.moviesCellTitle[indexPath.section]
+//        return cell
         
     }
   

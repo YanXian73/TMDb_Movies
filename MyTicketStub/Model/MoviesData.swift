@@ -19,12 +19,16 @@ struct MoviesData : Codable{
     var poster_path : String?
     var overview : String?
     var backdrop_path : String?
+    var popularity : Double?
 }
 struct Item: Codable {
     var results : [MoviesData]
     var total_pages : Int
     var page : Int
     var total_results : Int
+}
+struct Dates : Codable {
+    var dates :Dictionary<String, String>
 }
 
 struct MovieVideo : Codable {
