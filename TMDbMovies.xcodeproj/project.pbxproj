@@ -68,7 +68,7 @@
 		053FFC6026BEB31F00BFAA7C /* star (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star (1).png"; sourceTree = "<group>"; };
 		053FFC6426BEB4D200BFAA7C /* XXX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XXX.png; sourceTree = "<group>"; };
 		053FFC6626BED5E600BFAA7C /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
-		0540C9E226A7EB9B00BFF7EF /* MyTicketStub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTicketStub.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0540C9E226A7EB9B00BFF7EF /* TMDbMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDbMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0540C9E526A7EB9B00BFF7EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0540C9E726A7EB9B00BFF7EF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0540C9E926A7EB9B00BFF7EF /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 		0540C9E326A7EB9B00BFF7EF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0540C9E226A7EB9B00BFF7EF /* MyTicketStub.app */,
+				0540C9E226A7EB9B00BFF7EF /* TMDbMovies.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -230,9 +230,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0540C9E126A7EB9B00BFF7EF /* MyTicketStub */ = {
+		0540C9E126A7EB9B00BFF7EF /* TMDbMovies */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0540C9F626A7EB9C00BFF7EF /* Build configuration list for PBXNativeTarget "MyTicketStub" */;
+			buildConfigurationList = 0540C9F626A7EB9C00BFF7EF /* Build configuration list for PBXNativeTarget "TMDbMovies" */;
 			buildPhases = (
 				0540C9DE26A7EB9B00BFF7EF /* Sources */,
 				0540C9DF26A7EB9B00BFF7EF /* Frameworks */,
@@ -242,9 +242,9 @@
 			);
 			dependencies = (
 			);
-			name = MyTicketStub;
+			name = TMDbMovies;
 			productName = MyTicketStub;
-			productReference = 0540C9E226A7EB9B00BFF7EF /* MyTicketStub.app */;
+			productReference = 0540C9E226A7EB9B00BFF7EF /* TMDbMovies.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -261,7 +261,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0540C9DD26A7EB9B00BFF7EF /* Build configuration list for PBXProject "MyTicketStub" */;
+			buildConfigurationList = 0540C9DD26A7EB9B00BFF7EF /* Build configuration list for PBXProject "TMDbMovies" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -274,7 +274,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0540C9E126A7EB9B00BFF7EF /* MyTicketStub */,
+				0540C9E126A7EB9B00BFF7EF /* TMDbMovies */,
 			);
 		};
 /* End PBXProject section */
@@ -522,7 +522,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0540C9DD26A7EB9B00BFF7EF /* Build configuration list for PBXProject "MyTicketStub" */ = {
+		0540C9DD26A7EB9B00BFF7EF /* Build configuration list for PBXProject "TMDbMovies" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0540C9F426A7EB9C00BFF7EF /* Debug */,
@@ -531,7 +531,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0540C9F626A7EB9C00BFF7EF /* Build configuration list for PBXNativeTarget "MyTicketStub" */ = {
+		0540C9F626A7EB9C00BFF7EF /* Build configuration list for PBXNativeTarget "TMDbMovies" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0540C9F726A7EB9C00BFF7EF /* Debug */,
