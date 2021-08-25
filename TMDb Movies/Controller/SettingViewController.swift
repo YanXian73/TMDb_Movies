@@ -18,7 +18,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     var text = ["在App Store給我們評分", "寫信給開發者", "TMAD官網"]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.tableView.separatorStyle = .none // 設定分隔號樣式(底線)
         label.text = ""
         tableView.dataSource = self
         tableView.delegate = self
@@ -183,6 +183,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             cell.imageView?.image = UIImage(systemName: "desktopcomputer")
         }
         return cell
+        
     }
     
 //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

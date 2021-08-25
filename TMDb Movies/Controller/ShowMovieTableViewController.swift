@@ -153,7 +153,7 @@ class ShowMovieTableViewController: UITableViewController {
                     self.queue.addOperation(operation)
                 }
             }else{
-                cell0.backGropImageView.image = UIImage(named: "XXX.png")
+                cell4.backGropImageView.image = UIImage(named: "XXX.png")
             }
             return cell4
         } // switch

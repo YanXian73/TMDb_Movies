@@ -186,7 +186,7 @@
 		0540C9D926A7EB9B00BFF7EF = {
 			isa = PBXGroup;
 			children = (
-				0540C9E426A7EB9B00BFF7EF /* MyTicketStub */,
+				0540C9E426A7EB9B00BFF7EF /* TMDb Movies */,
 				0540C9E326A7EB9B00BFF7EF /* Products */,
 				05E36DE726AA938400F9E693 /* Frameworks */,
 			);
@@ -200,7 +200,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0540C9E426A7EB9B00BFF7EF /* MyTicketStub */ = {
+		0540C9E426A7EB9B00BFF7EF /* TMDb Movies */ = {
 			isa = PBXGroup;
 			children = (
 				052BC7BA26AC0A1D006AFCC8 /* Model */,
@@ -215,7 +215,7 @@
 				0540C9F026A7EB9C00BFF7EF /* LaunchScreen.storyboard */,
 				0540C9F326A7EB9C00BFF7EF /* Info.plist */,
 			);
-			path = MyTicketStub;
+			path = "TMDb Movies";
 			sourceTree = "<group>";
 		};
 		05E36DE726AA938400F9E693 /* Frameworks */ = {
@@ -486,7 +486,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CQ89Y6367G;
-				INFOPLIST_FILE = MyTicketStub/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TMDb Movies/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -506,7 +506,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CQ89Y6367G;
-				INFOPLIST_FILE = MyTicketStub/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TMDb Movies/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
