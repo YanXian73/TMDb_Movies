@@ -65,7 +65,10 @@ class MyMoviesTableViewController: UITableViewController, ShowMovieTableViewCont
         let request = NSFetchRequest<MyMovieList>(entityName: "MyMovieList")
         moc.performAndWait {
             do{
-                let result = try moc.fetch(request)
+                var result = try moc.fetch(request)
+                result.sort { data1, data2 in
+                    return data1.addDate.compare(data2.addDate) == ComparisonResult.orderedDescending // 大>小排序
+                }
                 self.myMovieList = result
             }catch{
                 print("error query db \(error)")
@@ -199,11 +202,13 @@ extension UITableView {
         messageLabel.sizeToFit()
 
         self.backgroundView = messageLabel
+        self.backgroundColor = .systemGray3
         self.separatorStyle = .none
     }
 
     func restore() {
         self.backgroundView = nil
+        self.backgroundColor = .white
         self.separatorStyle = .singleLine
     }
 }

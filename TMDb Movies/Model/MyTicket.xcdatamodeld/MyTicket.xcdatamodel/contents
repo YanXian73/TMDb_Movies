@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="MyMovieList" representedClassName=".MyMovieList" syncable="YES">
+        <attribute name="addDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="backdrop_path" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="original_title" optional="YES" attributeType="String"/>
@@ -23,7 +24,7 @@
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="MyMovieList" positionX="0" positionY="36" width="128" height="164"/>
+        <element name="MyMovieList" positionX="0" positionY="36" width="128" height="179"/>
         <element name="Remind" positionX="0" positionY="90" width="128" height="59"/>
         <element name="TicketStub" positionX="0" positionY="0" width="128" height="104"/>
     </elements>

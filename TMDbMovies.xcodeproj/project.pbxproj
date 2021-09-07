@@ -117,6 +117,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0504E57026E7252E00BEB696 /* TicketViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0540C9E926A7EB9B00BFF7EF /* FirstViewController.swift */,
+				05BE20B626A95C5600B1A497 /* ScrollViewController.swift */,
+				05E36DE526AA8B3B00F9E693 /* MapViewController.swift */,
+				05B7F64426A8742000DA2850 /* MyCollectionViewCell.swift */,
+			);
+			path = TicketViewController;
+			sourceTree = "<group>";
+		};
 		052BC7BA26AC0A1D006AFCC8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,16 +145,13 @@
 		052BC7BB26AC0A4B006AFCC8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0540C9E926A7EB9B00BFF7EF /* FirstViewController.swift */,
-				05DBDB1126C2707100CE889D /* SettingViewController.swift */,
-				05BE20B626A95C5600B1A497 /* ScrollViewController.swift */,
-				052B6F6526B1418F00B1B4EE /* MyMoviesTableViewController.swift */,
 				0572335926AF0EB4004B6C13 /* MenuTableViewController.swift */,
-				0580124F26C0F42E00394C0C /* MyShowMovieViewController.swift */,
+				052BC7BF26AC2FFD006AFCC8 /* MoviesViewController.swift */,
 				05A5E48E26B3A4D600CE02F6 /* ShowMovieTableViewController.swift */,
 				053FFC6626BED5E600BFAA7C /* VideoViewController.swift */,
-				052BC7BF26AC2FFD006AFCC8 /* MoviesViewController.swift */,
-				05E36DE526AA8B3B00F9E693 /* MapViewController.swift */,
+				052B6F6526B1418F00B1B4EE /* MyMoviesTableViewController.swift */,
+				0580124F26C0F42E00394C0C /* MyShowMovieViewController.swift */,
+				05DBDB1126C2707100CE889D /* SettingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -151,7 +159,6 @@
 		052BC7BC26AC0ABD006AFCC8 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				05B7F64426A8742000DA2850 /* MyCollectionViewCell.swift */,
 				0572335B26AF0EFC004B6C13 /* MenuTableViewCell.swift */,
 				05A5E49026B3AE3B00CE02F6 /* ShowMovieTableViewCell.swift */,
 				053750E526AD5AA800E271BA /* MoviesTableViewCell.swift */,
@@ -203,6 +210,7 @@
 		0540C9E426A7EB9B00BFF7EF /* TMDb Movies */ = {
 			isa = PBXGroup;
 			children = (
+				0504E57026E7252E00BEB696 /* TicketViewController */,
 				052BC7BA26AC0A1D006AFCC8 /* Model */,
 				052BC7BB26AC0A4B006AFCC8 /* Controller */,
 				052BC7BC26AC0ABD006AFCC8 /* Cell */,

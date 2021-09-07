@@ -12,7 +12,7 @@
         <!--Ticket stub-->
         <scene sceneID="34I-lj-BHy">
             <objects>
-                <viewController storyboardIdentifier="firstVC" id="ors-3A-MlY" customClass="FirstViewController" customModule="MyTicketStub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="firstVC" id="ors-3A-MlY" customClass="FirstViewController" customModule="TMDbMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UAl-9C-RgY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +27,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="zoG-k3-AA3" customClass="MyCollectionViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="zoG-k3-AA3" customClass="MyCollectionViewCell" customModule="TMDbMovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="icc-eR-ekA">
@@ -122,7 +122,7 @@
         <!--Scroll View Controller-->
         <scene sceneID="qXz-5Y-U7W">
             <objects>
-                <viewController storyboardIdentifier="scrollVC" id="YUE-s1-ONS" customClass="ScrollViewController" customModule="MyTicketStub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scrollVC" id="YUE-s1-ONS" customClass="ScrollViewController" customModule="TMDbMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v2U-cG-YJo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -291,7 +291,7 @@
         <!--Map View Controller-->
         <scene sceneID="Q7D-Gy-Lfc">
             <objects>
-                <viewController id="US7-S4-UpD" customClass="MapViewController" customModule="MyTicketStub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="US7-S4-UpD" customClass="MapViewController" customModule="TMDbMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wxT-NG-dEh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -340,7 +340,7 @@
         <!--Video View Controller-->
         <scene sceneID="AG8-5q-y2e">
             <objects>
-                <viewController id="ggL-y7-ffP" customClass="VideoViewController" customModule="MyTicketStub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ggL-y7-ffP" customClass="VideoViewController" customModule="TMDbMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Id0-4Z-nw2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -375,13 +375,13 @@
         <!--電影資訊-->
         <scene sceneID="6BK-3g-Vaa">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="wGG-qh-hqP" customClass="ShowMovieTableViewController" customModule="MyTicketStub" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="wGG-qh-hqP" customClass="ShowMovieTableViewController" customModule="TMDbMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5G6-Ye-Ygs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell0" rowHeight="454.5" id="ycI-HN-8aR" customClass="ShowMovieTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell0" rowHeight="454.5" id="ycI-HN-8aR" customClass="ShowMovieTableViewCell" customModule="TMDbMovies" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.5" width="375" height="454.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ycI-HN-8aR" id="jjW-1C-5nD">
@@ -406,7 +406,7 @@
                                     <outlet property="posterImageView" destination="2UB-yF-qdq" id="C7s-Lv-SYy"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell1" rowHeight="218" id="r6s-SL-iYT" customClass="ShowMovieTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell1" rowHeight="218" id="r6s-SL-iYT" customClass="ShowMovieTableViewCell" customModule="TMDbMovies" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="479" width="375" height="218"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r6s-SL-iYT" id="Q3O-rY-wQE">
@@ -490,7 +490,7 @@
                                     <outlet property="voteLabel" destination="TiD-YD-fO5" id="FtU-86-aSn"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell2" rowHeight="88" id="7xD-5w-KrK" customClass="ShowMovieTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell2" rowHeight="88" id="7xD-5w-KrK" customClass="ShowMovieTableViewCell" customModule="TMDbMovies" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="697" width="375" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7xD-5w-KrK" id="U4N-kO-ANd">
@@ -515,7 +515,7 @@
                                     <outlet property="overViewLabel" destination="wo2-ZQ-fSI" id="XKD-6L-46Q"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell3" rowHeight="88" id="Umf-kD-yhR" customClass="ShowMovieTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell3" rowHeight="88" id="Umf-kD-yhR" customClass="ShowMovieTableViewCell" customModule="TMDbMovies" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="785" width="375" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Umf-kD-yhR" id="YP4-Az-Psa">
@@ -545,7 +545,7 @@
                                     <segue destination="ggL-y7-ffP" kind="show" identifier="segueVideo" id="ZVq-kX-92W"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell4" rowHeight="193" id="7hp-3d-aUL" customClass="ShowMovieTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell4" rowHeight="193" id="7hp-3d-aUL" customClass="ShowMovieTableViewCell" customModule="TMDbMovies" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="873" width="375" height="193"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7hp-3d-aUL" id="iPS-jh-kOj">
@@ -579,7 +579,7 @@
                     <navigationItem key="navigationItem" title="電影資訊" id="FNl-6Y-apF">
                         <barButtonItem key="rightBarButtonItem" image="star" catalog="system" id="cEe-Zn-9lV">
                             <connections>
-                                <action selector="addMyFavorite:" destination="wGG-qh-hqP" id="SUY-2V-DAx"/>
+                                <action selector="addOrRemoveMyFavorite:" destination="wGG-qh-hqP" id="SUY-2V-DAx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -594,7 +594,7 @@
         <!--Movies-->
         <scene sceneID="6r7-M2-PA6">
             <objects>
-                <viewController id="pgd-bP-kvn" customClass="MoviesViewController" customModule="MyTicketStub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pgd-bP-kvn" customClass="MoviesViewController" customModule="TMDbMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LHV-3a-CnI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -602,7 +602,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k69-6Z-GgK">
                                 <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="moviesCell" rowHeight="175" id="LSF-BR-IJ6" customClass="MoviesTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="moviesCell" rowHeight="175" id="LSF-BR-IJ6" customClass="MoviesTableViewCell" customModule="TMDbMovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="375" height="175"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LSF-BR-IJ6" id="B2Z-3N-Jdp">
@@ -719,7 +719,7 @@
         <!--My Show Movie View Controller-->
         <scene sceneID="WuP-DP-pRV">
             <objects>
-                <viewController storyboardIdentifier="myShowMovie" id="yQt-ly-s6m" customClass="MyShowMovieViewController" customModule="MyTicketStub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="myShowMovie" id="yQt-ly-s6m" customClass="MyShowMovieViewController" customModule="TMDbMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aUt-dm-Q4q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -728,7 +728,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell0" rowHeight="334" id="jjC-Kr-CmG" customClass="ShowMovieTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell0" rowHeight="334" id="jjC-Kr-CmG" customClass="ShowMovieTableViewCell" customModule="TMDbMovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="375" height="334"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jjC-Kr-CmG" id="6bj-gk-NxF">
@@ -753,7 +753,7 @@
                                             <outlet property="posterImageView" destination="B6I-mi-7ns" id="qcU-jY-chq"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="257" id="8Cv-xY-DqE" customClass="ShowMovieTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="257" id="8Cv-xY-DqE" customClass="ShowMovieTableViewCell" customModule="TMDbMovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="358.5" width="375" height="257"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Cv-xY-DqE" id="gL8-M5-QEB">
@@ -887,7 +887,7 @@
                                             <outlet property="voteLabel" destination="Yxn-yC-ztV" id="pQV-3e-oTQ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell2" rowHeight="60" id="jQF-z0-QO8" customClass="ShowMovieTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell2" rowHeight="60" id="jQF-z0-QO8" customClass="ShowMovieTableViewCell" customModule="TMDbMovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="615.5" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jQF-z0-QO8" id="wg8-lC-diT">
@@ -912,7 +912,7 @@
                                             <outlet property="overViewLabel" destination="OhD-Sh-8A5" id="nEn-w1-yEm"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell3" rowHeight="65" id="rqd-9q-Wcy" customClass="ShowMovieTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell3" rowHeight="65" id="rqd-9q-Wcy" customClass="ShowMovieTableViewCell" customModule="TMDbMovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="675.5" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rqd-9q-Wcy" id="NY0-c9-r7n">
@@ -942,7 +942,7 @@
                                             <segue destination="ggL-y7-ffP" kind="show" identifier="myVideo" id="ZzM-rU-Kir"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell4" rowHeight="198" id="gZU-CL-Cbx" customClass="ShowMovieTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell4" rowHeight="198" id="gZU-CL-Cbx" customClass="ShowMovieTableViewCell" customModule="TMDbMovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="740.5" width="375" height="198"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gZU-CL-Cbx" id="Csc-UI-yct">
@@ -997,12 +997,12 @@
         <!--我的片單-->
         <scene sceneID="fIt-cQ-fE9">
             <objects>
-                <tableViewController storyboardIdentifier="myMovie" id="fXh-7T-0hk" customClass="MyMoviesTableViewController" customModule="MyTicketStub" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="myMovie" id="fXh-7T-0hk" customClass="MyMoviesTableViewController" customModule="TMDbMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="F75-HY-LyY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="175" id="JMI-c6-Z3A" customClass="MoviesTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="175" id="JMI-c6-Z3A" customClass="MoviesTableViewCell" customModule="TMDbMovies" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.5" width="375" height="175"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JMI-c6-Z3A" id="QIL-Pq-9d3">
@@ -1118,10 +1118,10 @@
             </objects>
             <point key="canvasLocation" x="1696.8" y="-162.3688155922039"/>
         </scene>
-        <!--Setting-->
+        <!--關於-->
         <scene sceneID="u5u-Qv-7EO">
             <objects>
-                <viewController id="4TH-Xj-m2U" customClass="SettingViewController" customModule="MyTicketStub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4TH-Xj-m2U" customClass="SettingViewController" customModule="TMDbMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S41-VB-VpY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1147,13 +1147,6 @@
                                     <constraint firstAttribute="width" constant="150" id="onk-fx-E71"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="關於軟體" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8f7-ep-saK">
-                                <rect key="frame" x="16" y="20" width="113" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PD2-OE-zJ5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1167,10 +1160,9 @@
                             <constraint firstItem="YkF-g5-T4d" firstAttribute="top" secondItem="gs1-Ec-F2G" secondAttribute="bottom" constant="45" id="gFp-t6-WBb"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Setting" image="gearshape" catalog="system" id="Xr7-Fi-S7F"/>
+                    <tabBarItem key="tabBarItem" title="關於" image="info.circle" catalog="system" id="Xr7-Fi-S7F"/>
                     <navigationItem key="navigationItem" id="wQu-Jt-Vsg"/>
                     <connections>
-                        <outlet property="label" destination="8f7-ep-saK" id="OKL-2o-0aV"/>
                         <outlet property="tableView" destination="YkF-g5-T4d" id="Ns1-zk-m0Z"/>
                     </connections>
                 </viewController>
@@ -1181,12 +1173,12 @@
         <!--TMDb Movies-->
         <scene sceneID="qsI-Lg-Rfk">
             <objects>
-                <tableViewController id="Dvh-0Z-8Ep" customClass="MenuTableViewController" customModule="MyTicketStub" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Dvh-0Z-8Ep" customClass="MenuTableViewController" customModule="TMDbMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MRZ-i7-eoh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" rowHeight="135" id="u7d-NY-J6K" customClass="MenuTableViewCell" customModule="MyTicketStub" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" rowHeight="135" id="u7d-NY-J6K" customClass="MenuTableViewCell" customModule="TMDbMovies" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.5" width="375" height="135"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u7d-NY-J6K" id="rEi-JV-PhT">
@@ -1239,11 +1231,11 @@
             </objects>
             <point key="canvasLocation" x="-76" y="557.27136431784118"/>
         </scene>
-        <!--Menu-->
+        <!--探索-->
         <scene sceneID="Teo-x5-ZEq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ihx-4O-81r" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Menu" image="rectangle.grid.1x2.fill" catalog="system" id="1yG-2C-SZa"/>
+                    <tabBarItem key="tabBarItem" title="探索" image="magnifyingglass" catalog="system" id="1yG-2C-SZa"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AoI-Nm-zJP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1282,10 +1274,10 @@
         <segue reference="ZzM-rU-Kir"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="iTunesArt.png" width="512" height="512"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="rectangle.grid.1x2.fill" catalog="system" width="128" height="101"/>
         <image name="rectangle.grid.2x2.fill" catalog="system" width="128" height="99"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>

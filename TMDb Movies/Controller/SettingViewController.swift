@@ -10,16 +10,15 @@ import CoreData
 
 class SettingViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
-
-    @IBOutlet weak var label: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     var remind: [Remind]!
-    var text = ["在App Store給我們評分", "寫信給開發者", "TMAD官網"]
+    var text = ["在App Store給我們評分", "寫信給開發者", "TMDb官網"]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.separatorStyle = .none // 設定分隔號樣式(底線)
-        label.text = ""
+//        self.view.backgroundColor = .white
+//        self.tableView.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
 
@@ -82,7 +81,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
                 let product = Bundle.main.object(forInfoDictionaryKey: "CFBundleName")
                 let messageBody = "<br/><br/><br/>Product:\(product!)(\(version!))"
                 mailController.setMessageBody(messageBody, isHTML: true)
-                mailController.setToRecipients(["efrtyjukopp@gmail.com"])
+                mailController.setToRecipients(["efrtyjukopp1@gmail.com"])
                 self.present(mailController, animated: true, completion: nil)
             }
            
@@ -104,6 +103,18 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         case .saved:
             print("user saved")
         case .sent:
+            self.dismiss(animated: true, completion: nil)
+            if NetStatus.shared.isConnected {
+                let alert = UIAlertController(title: "發信成功", message: "", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "ok", style: .cancel)
+                alert.addAction(ok)
+                present(alert, animated: true)
+            }else {
+                let alert = UIAlertController(title: "發信失敗", message: "請檢查網路狀態", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "取消", style: .cancel)
+                alert.addAction(ok)
+                present(alert, animated: true)
+            }
             print("user send")
         default:
             print("")
@@ -147,6 +158,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
         view.tintColor = UIColor.clear
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.black
+        header.textLabel?.font = UIFont.systemFont(ofSize: 25)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -173,6 +185,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         
         cell.textLabel?.text = self.text[indexPath.row]
+     //   cell.backgroundColor = .white
         switch indexPath.row {
         case 0:
             cell.imageView?.image = UIImage(systemName: "star.circle")

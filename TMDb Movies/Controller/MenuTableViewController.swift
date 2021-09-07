@@ -15,6 +15,7 @@ class MenuTableViewController: UITableViewController {
     let images : [UIImage] = [UIImage(named: "NEW.jpg")!, UIImage(named: "movie.png")!, UIImage(named: "Hot.png")!, UIImage(named: "star.png")!]
     override func viewDidLoad() {
         super.viewDidLoad()
+        NetStatus.shared.startMonitoring() //開始監控網路狀態
         
         tableView.rowHeight = tableView.frame.height/5 - 25
      
@@ -25,7 +26,11 @@ class MenuTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "segueMovieVC" else {
+        guard segue.identifier == "segueMovieVC" , NetStatus.shared.isConnected else {
+            let alert = UIAlertController(title: "請檢查網路狀態", message: "", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "取消", style: .cancel)
+            alert.addAction(ok)
+            present(alert, animated: true)
             return
         }
         if let movieVC = segue.destination as? MoviesViewController,

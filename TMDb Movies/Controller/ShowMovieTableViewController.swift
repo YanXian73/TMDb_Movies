@@ -56,7 +56,7 @@ class ShowMovieTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func addMyFavorite(_ sender: Any) {
+    @IBAction func addOrRemoveMyFavorite(_ sender: Any) {
         
         guard let myMovieTVC = storyboard?.instantiateViewController(withIdentifier: "myMovie") as? MyMoviesTableViewController else { return }
         self.delegate = myMovieTVC
