@@ -102,7 +102,7 @@ class MyMoviesTableViewController: UITableViewController, ShowMovieTableViewCont
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if self.myMovieList.isEmpty {
-            self.tableView.setEmptyMessage("目前清單是空的，前往電影分類詳細資訊頁面->點擊右上角星星，新增／移除我的片單！")
+            self.tableView.setEmptyMessage("目前清單是空的，前往電影分類詳細資訊頁面->點擊右上角愛心，新增／移除我的片單！")
         }else{
             self.tableView.restore()
         }

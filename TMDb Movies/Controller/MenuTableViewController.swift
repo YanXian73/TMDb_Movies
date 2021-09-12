@@ -12,7 +12,7 @@ class MenuTableViewController: UITableViewController {
   //  var menuData = [MoviesData]()
 
     let moviesCellTitle = ["即將上映", "現正放映", "熱門電影", "好評電影"]
-    let images : [UIImage] = [UIImage(named: "NEW.jpg")!, UIImage(named: "movie.png")!, UIImage(named: "Hot.png")!, UIImage(named: "star.png")!]
+    let images : [UIImage] = [UIImage(named: "NEW.jpg")!, UIImage(named: "movie.png")!, UIImage(named: "Hot.png")!, UIImage(systemName: "star.fill")!]
     override func viewDidLoad() {
         super.viewDidLoad()
         NetStatus.shared.startMonitoring() //開始監控網路狀態

@@ -23,6 +23,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var totalPages: Int!
     var queue = OperationQueue()
     var dates : Dates?
+    var searchYear = "2021"
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -123,10 +124,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if self.indexPath?.section == 0 || self.indexPath?.section == 1 {
-            let item = self.movieData.filter { data in
-                return data.release_date?.contains("2021") == true
-            }
-            return item.count
+            self.movieData = self.movieData.filter({$0.release_date?.contains("\(searchYear)") == true})
         }
         return self.movieData.count
     }

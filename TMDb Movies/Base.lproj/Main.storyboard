@@ -577,7 +577,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="電影資訊" id="FNl-6Y-apF">
-                        <barButtonItem key="rightBarButtonItem" image="star" catalog="system" id="cEe-Zn-9lV">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="cEe-Zn-9lV">
                             <connections>
                                 <action selector="addOrRemoveMyFavorite:" destination="wGG-qh-hqP" id="SUY-2V-DAx"/>
                             </connections>
@@ -1254,7 +1254,7 @@
         <scene sceneID="MDN-fC-s6H">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v5Q-VB-6Vv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的片單" image="star.fill" catalog="system" id="lZn-EW-DCK"/>
+                    <tabBarItem key="tabBarItem" title="我的片單" image="heart.fill" catalog="system" id="lZn-EW-DCK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p7D-ua-l70">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1271,15 +1271,15 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZzM-rU-Kir"/>
+        <segue reference="ZVq-kX-92W"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="iTunesArt.png" width="512" height="512"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="rectangle.grid.2x2.fill" catalog="system" width="128" height="99"/>
-        <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="labelColor">

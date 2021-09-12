@@ -23,6 +23,7 @@ class ShowMovieTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        myFavoriteOutlet.image = UIImage(systemName: "heart")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -35,7 +36,7 @@ class ShowMovieTableViewController: UITableViewController {
         
         for i in myMovieList {
             if i.id == currentMovie.id {
-                self.myFavoriteOutlet.image = UIImage(systemName: "star.fill")
+                self.myFavoriteOutlet.image = UIImage(systemName: "heart.fill")
                 self.isFavorite = true
             }
         }
@@ -62,13 +63,13 @@ class ShowMovieTableViewController: UITableViewController {
         self.delegate = myMovieTVC
         myMovieTVC.queryFromDB()
         if !self.isFavorite {
-            self.myFavoriteOutlet.image = UIImage(systemName: "star.fill")
+            self.myFavoriteOutlet.image = UIImage(systemName: "heart.fill")
             self.delegate?.addFavoriteRow(movieData: currentMovie)
             self.isFavorite = true
         }else {
             
             self.delegate?.removeFavoriteRow(movieeData: currentMovie)
-            self.myFavoriteOutlet.image = UIImage(systemName: "star")
+            self.myFavoriteOutlet.image = UIImage(systemName: "heart")
             self.isFavorite = false
             
         }
